@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Carousel from '../components/Carousel';
+import StatisticsCharts from '../components/StatisticsCharts';
 import homeImage from '../src/assets/images/home.jpg';
 import agraImage from '../src/assets/images/Agra.jpg';
 import dinnerImage from '../src/assets/images/Dinner.jpg';
@@ -241,7 +242,7 @@ export default function Home() {
       </div>
 
       {/* Membership Section */}
-      <div className="bg-white py-8 sm:py-12 lg:py-16">
+      <div className="bg-white pt-8 sm:pt-12 pb-4 sm:pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-10">
@@ -374,6 +375,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Statistics Charts Section */}
+      <StatisticsCharts />
     </div>
   );
 }

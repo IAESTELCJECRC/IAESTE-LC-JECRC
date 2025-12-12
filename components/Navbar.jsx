@@ -320,6 +320,7 @@ export default function Navbar() {
               timeoutRef={departmentTimeoutRef}
               buttonLabel="Department"
             >
+              <DropdownLink to="/department">Departments</DropdownLink>
               <DropdownLink to="/team">Team</DropdownLink>
             </DesktopDropdown>
 
@@ -401,6 +402,7 @@ export default function Navbar() {
               label="Department"
               icon={<BuildingIcon />}
             >
+              <MobileDropdownLink to="/department" onClick={closeMobileMenu}>Departments</MobileDropdownLink>
               <MobileDropdownLink to="/team" onClick={closeMobileMenu}>Team</MobileDropdownLink>
             </MobileDropdown>
 

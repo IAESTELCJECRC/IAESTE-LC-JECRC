@@ -1,0 +1,99 @@
+[
+  {
+    "id": "advisor",
+    "name": "Dr. Ekta Menghani",
+    "role": "Faculty Advisor",
+    "bio": "Dr. Ekta Menghani, Head of the Department of Biotechnology and Professor at JECRC University, is a distinguished academic with extensive expertise in her field. As the Faculty Advisor for IAESTE LC JECRC, Dr. Menghani has played a pivotal role in bridging academia with global professional exposure. Under her mentorship, IAESTE LC JECRC has thrived, fostering skill development and cross-cultural exchanges, and offering unparalleled opportunities to students pursuing international careers.",
+    "img": "src/assets/images/1.jpeg"
+  },
+  {
+    "id": "m2",
+    "name": "Nehal Sharma",
+    "role": "President",
+    
+    "img": "src/assets/images/imgv1.jpeg"
+  },
+  {
+    "id": "m1",
+    "name": "Pooja Kumari",
+    "role": "Vice President",
+    
+    "img": "src/assets/images/imgv2.jpg"
+  },
+  {
+    "id": "m3",
+    "name": "Kanishka Nama",
+    "role": "Outgoing Department Head",
+    
+    "img": "src/assets/images/imgv15.jpg"
+  },
+  {
+    "id": "m4",
+    "name": "Aarna Modi",
+    "role": "Incoming Department Head",
+    
+    "img": "src/assets/images/imgv5.jpg"
+  },
+  {
+    "id": "m5",
+    "name": "Ishita Ahluwalia",
+    "role": "Public Relations Head",
+   
+    "img": "src/assets/images/imgv9.jpg"
+  },
+  {
+    "id": "m6",
+    "name": "Rakshita Rathore",
+    "role": "Human Resource Deputy Head ",
+    
+    "img": "src/assets/images/imgv4.jpg"
+  },
+  {
+    "id": "m7",
+    "name": "Harshita Soni",
+    "role": "CFO",
+    
+    "img": "src/assets/images/imgv14.jpg"
+  },
+  {
+    "id": "m8",
+    "name": "Samyak Jain",
+    "role": "Adminstration Head",
+    
+    "img": "src/assets/images/imgv8.jpg"
+  },
+  {
+    "id": "m9",
+    "name": "Vikram Saini",
+    "role": "IT-DA Head",
+    
+    "img": "src/assets/images/imgv7.jpg"
+  },
+  {
+    "id": "m10",
+    "name": "Devansh Gupta",
+    "role": "Human Resource Head ",
+    
+    "img": "src/assets/images/imgv3.jpg"
+  },
+  {
+    "id": "m11",
+    "name": "Palak Kulshrestha",
+    "role": "Public Relations Deputy Head",
+    "img": "src/assets/images/imgv12.jpg"
+  },
+  {
+    "id": "m12",
+    "name": "Jatin Mishra",
+    
+    "role": "Corprate Relations & Alumni Head",
+    "img": "src/assets/images/imgv10.jpg"
+  },
+  {
+    "id": "Incoming & IT-DA Deputy Head",
+    "name": "Pratham Jain",
+    "role": "Incoming & IT-DA Deputy Head",
+    "img": "src/assets/images/imgv6.jpg"
+  }
+]
+

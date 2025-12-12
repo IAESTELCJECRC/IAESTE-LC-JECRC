@@ -170,6 +170,35 @@ export default function Navbar() {
             >
                 {icon && <span className="mr-3">{icon}</span>}
                 <span>{children}</span>
+            <DesktopDropdown
+              isOpen={departmentDropdown}
+              setIsOpen={setDepartmentDropdown}
+              timeoutRef={departmentTimeoutRef}
+              buttonLabel="Department"
+            >
+              <DropdownLink to="/department">Departments</DropdownLink>
+              <DropdownLink to="/team">Team</DropdownLink>
+            </DesktopDropdown>
+
+            <DesktopDropdown
+              isOpen={testimonialsDropdown}
+              setIsOpen={setTestimonialsDropdown}
+              timeoutRef={testimonialsTimeoutRef}
+              buttonLabel="Stats"
+            >
+              <DropdownLink to="/testimonials/outgoing">Outgoing</DropdownLink>
+              <DropdownLink to="/testimonials/incoming">Incoming</DropdownLink>
+            </DesktopDropdown>
+          </div>
+
+          {/* Join Membership Button (Desktop) */}
+          <div className="hidden md:flex items-center ml-6 -mr-8 lg:-mr-12">
+            <Link
+              to="/membership"
+              className="relative bg-[#003F68] text-white px-6 py-2.5 rounded-md hover:bg-[#003F68] transition-all duration-300 shadow-md hover:shadow-xl font-semibold text-base tracking-wide transform hover:-translate-y-1 hover:scale-105 overflow-hidden group"
+            >
+              <span className="relative z-10">Join Membership</span>
+              <span className="absolute inset-0 bg-[#003F68] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </Link>
         );
     };
@@ -218,6 +247,79 @@ export default function Navbar() {
             >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#003F68] mr-3"></span>
                 {children}
+      </div>
+
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 top-20"
+          onClick={closeMobileMenu}
+        ></div>
+      )}
+
+      {/* Mobile Slide-in Menu */}
+      <div className={`md:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
+        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="flex flex-col h-full overflow-y-auto bg-gradient-to-b from-white via-gray-50/30 to-white">
+          <div className="flex-1 px-3 py-6">
+            <MobileDropdown
+              isOpen={aboutMobileDropdown}
+              setIsOpen={setAboutMobileDropdown}
+              label="About"
+              icon={<InfoIcon />}
+            >
+              <MobileDropdownLink to="/faq" onClick={closeMobileMenu}>FAQ</MobileDropdownLink>
+              <MobileDropdownLink to="/contact" onClick={closeMobileMenu}>Contact</MobileDropdownLink>
+            </MobileDropdown>
+            
+            <MobileDropdown
+              isOpen={galleryMobileDropdown}
+              setIsOpen={setGalleryMobileDropdown}
+              label="Gallery"
+              icon={<GalleryIcon />}
+            >
+              <MobileDropdownLink to="/gallery/rhythm" onClick={closeMobileMenu}>Rhythm</MobileDropdownLink>
+              <MobileDropdownLink to="/gallery/membership-drive" onClick={closeMobileMenu}>Membership Drive</MobileDropdownLink>
+            </MobileDropdown>
+            
+            <MobileNavLink to="/membership" icon={<UsersIcon />} onClick={closeMobileMenu}>
+              Membership
+            </MobileNavLink>
+            
+            <MobileDropdown
+              isOpen={departmentMobileDropdown}
+              setIsOpen={setDepartmentMobileDropdown}
+              label="Department"
+              icon={<BuildingIcon />}
+            >
+              <MobileDropdownLink to="/department" onClick={closeMobileMenu}>Departments</MobileDropdownLink>
+              <MobileDropdownLink to="/team" onClick={closeMobileMenu}>Team</MobileDropdownLink>
+            </MobileDropdown>
+
+            <MobileDropdown
+              isOpen={testimonialsMobileDropdown}
+              setIsOpen={setTestimonialsMobileDropdown}
+              label="Testimonials"
+              icon={<ChatIcon />}
+            >
+              <MobileDropdownLink to="/testimonials/outgoing" onClick={closeMobileMenu}>Outgoing</MobileDropdownLink>
+              <MobileDropdownLink to="/testimonials/incoming" onClick={closeMobileMenu}>Incoming</MobileDropdownLink>
+            </MobileDropdown>
+          </div>
+          
+          {/* Join Membership Button - Fixed at Bottom */}
+          <div className="p-5 pt-3 border-t border-gray-200/80 bg-gradient-to-b from-white via-gray-50/50 to-white backdrop-blur-sm">
+            <Link 
+              to="/membership" 
+              onClick={closeMobileMenu}
+              className="group relative block w-full text-center bg-[#003F68] text-white px-6 py-4 rounded-xl font-bold text-base hover:bg-[#003F68] active:scale-[0.98] transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                <CheckIcon />
+                <span className="ml-2">Join Membership</span>
+              </span>
+              <span className="absolute inset-0 bg-[#003F68] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </Link>
         );
     };

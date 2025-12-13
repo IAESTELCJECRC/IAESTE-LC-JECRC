@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom'; 
+import { Routes, Route } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
@@ -12,6 +12,9 @@ import Join from '../pages/Join';
 import Outgoing from '../pages/Outgoing';
 import Incoming from '../pages/Incoming';
 import LoadingScreen from '../components/LoadingScreen';
+import Gallery from '../pages/Gallery';
+import FAQ from '../pages/FAQ';
+import Contact from '../pages/Contact';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +39,9 @@ export default function App() {
             <Route path="/join" element={<Join />} />
             <Route path="/testimonials/outgoing" element={<Outgoing />} />
             <Route path="/testimonials/incoming" element={<Incoming />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
         </>

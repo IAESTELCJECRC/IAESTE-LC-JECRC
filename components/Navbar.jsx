@@ -5,19 +5,16 @@ import logo from '../src/assets/logos/Iaeste Logo Standard.png';
 export default function Navbar() {
   // ==================== STATE MANAGEMENT ====================
   const [aboutDropdown, setAboutDropdown] = useState(false);
-  const [galleryDropdown, setGalleryDropdown] = useState(false);
   const [departmentDropdown, setDepartmentDropdown] = useState(false);
   const [testimonialsDropdown, setTestimonialsDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [aboutMobileDropdown, setAboutMobileDropdown] = useState(false);
-  const [galleryMobileDropdown, setGalleryMobileDropdown] = useState(false);
   const [departmentMobileDropdown, setDepartmentMobileDropdown] = useState(false);
   const [testimonialsMobileDropdown, setTestimonialsMobileDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   const location = useLocation();
   const aboutTimeoutRef = useRef(null);
-  const galleryTimeoutRef = useRef(null);
   const departmentTimeoutRef = useRef(null);
   const testimonialsTimeoutRef = useRef(null);
 
@@ -59,7 +56,6 @@ export default function Navbar() {
   useEffect(() => {
     return () => {
       if (aboutTimeoutRef.current) clearTimeout(aboutTimeoutRef.current);
-      if (galleryTimeoutRef.current) clearTimeout(galleryTimeoutRef.current);
       if (departmentTimeoutRef.current) clearTimeout(departmentTimeoutRef.current);
       if (testimonialsTimeoutRef.current) clearTimeout(testimonialsTimeoutRef.current);
     };
@@ -94,9 +90,8 @@ export default function Navbar() {
     return (
       <Link
         to={to}
-        className={`relative text-gray-700 hover:text-[#003F68] transition-all duration-300 font-semibold text-base lg:text-lg ${
-          isActive ? 'text-[#003F68]' : ''
-        }`}
+        className={`relative text-gray-700 hover:text-[#003F68] transition-all duration-300 font-semibold text-base lg:text-lg ${isActive ? 'text-[#003F68]' : ''
+          }`}
       >
         {label}
         {isActive && (
@@ -108,10 +103,10 @@ export default function Navbar() {
 
   // Dropdown Arrow Icon
   const DropdownArrow = ({ isOpen }) => (
-    <svg 
-      className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
-      fill="none" 
-      stroke="currentColor" 
+    <svg
+      className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+      fill="none"
+      stroke="currentColor"
       viewBox="0 0 24 24"
     >
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -119,12 +114,12 @@ export default function Navbar() {
   );
 
   // Desktop Dropdown Component
-  const DesktopDropdown = ({ 
-    isOpen, 
-    setIsOpen, 
-    timeoutRef, 
-    buttonLabel, 
-    children 
+  const DesktopDropdown = ({
+    isOpen,
+    setIsOpen,
+    timeoutRef,
+    buttonLabel,
+    children
   }) => (
     <div
       className="relative h-full flex items-center"
@@ -135,7 +130,7 @@ export default function Navbar() {
         {buttonLabel}
         <DropdownArrow isOpen={isOpen} />
       </button>
-      
+
       {isOpen && (
         <>
           <div className="absolute top-full left-0 w-full h-2"></div>
@@ -149,8 +144,8 @@ export default function Navbar() {
 
   // Dropdown Link Item
   const DropdownLink = ({ to, children }) => (
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       className="block px-4 py-2.5 text-base font-medium text-gray-700 hover:bg-blue-50 hover:text-[#003F68] hover:pl-6 transition-all duration-300 rounded-md"
     >
       {children}
@@ -161,14 +156,13 @@ export default function Navbar() {
   const MobileNavLink = ({ to, icon, children, onClick }) => {
     const isActive = location.pathname === to;
     return (
-      <Link 
-        to={to} 
+      <Link
+        to={to}
         onClick={onClick}
-        className={`flex items-center px-5 py-4 rounded-xl text-base font-semibold transition-all duration-300 mb-2 ${
-          isActive
-            ? 'bg-gradient-to-r from-[#003F68]/10 to-[#003F68]/5 text-[#003F68] shadow-sm'
-            : 'text-gray-700 hover:bg-gray-50/80 hover:text-[#003F68]'
-        }`}
+        className={`flex items-center px-5 py-4 rounded-xl text-base font-semibold transition-all duration-300 mb-2 ${isActive
+          ? 'bg-gradient-to-r from-[#003F68]/10 to-[#003F68]/5 text-[#003F68] shadow-sm'
+          : 'text-gray-700 hover:bg-gray-50/80 hover:text-[#003F68]'
+          }`}
       >
         {icon && <span className="mr-3">{icon}</span>}
         <span>{children}</span>
@@ -177,21 +171,20 @@ export default function Navbar() {
   };
 
   // Mobile Dropdown Component
-  const MobileDropdown = ({ 
-    isOpen, 
-    setIsOpen, 
-    label, 
-    icon, 
-    children 
+  const MobileDropdown = ({
+    isOpen,
+    setIsOpen,
+    label,
+    icon,
+    children
   }) => (
     <div className="mb-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between px-5 py-4 rounded-xl text-base font-semibold transition-all duration-300 ${
-          isOpen 
-            ? 'bg-gradient-to-r from-[#003F68]/10 to-[#003F68]/5 text-[#003F68] shadow-sm' 
-            : 'text-gray-700 hover:bg-gray-50/80 hover:text-[#003F68]'
-        }`}
+        className={`w-full flex items-center justify-between px-5 py-4 rounded-xl text-base font-semibold transition-all duration-300 ${isOpen
+          ? 'bg-gradient-to-r from-[#003F68]/10 to-[#003F68]/5 text-[#003F68] shadow-sm'
+          : 'text-gray-700 hover:bg-gray-50/80 hover:text-[#003F68]'
+          }`}
       >
         <div className="flex items-center space-x-3">
           {icon}
@@ -211,14 +204,13 @@ export default function Navbar() {
   const MobileDropdownLink = ({ to, children, onClick }) => {
     const isActive = location.pathname === to;
     return (
-      <Link 
-        to={to} 
+      <Link
+        to={to}
         onClick={onClick}
-        className={`flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-          isActive
-            ? 'bg-[#003F68]/10 text-[#003F68]'
-            : 'text-gray-600 hover:bg-[#003F68]/5 hover:text-[#003F68]'
-        }`}
+        className={`flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+          ? 'bg-[#003F68]/10 text-[#003F68]'
+          : 'text-gray-600 hover:bg-[#003F68]/5 hover:text-[#003F68]'
+          }`}
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#003F68] mr-3"></span>
         {children}
@@ -275,17 +267,16 @@ export default function Navbar() {
 
   // ==================== RENDER ====================
   return (
-    <nav className={`bg-white border-b-2 border-gray-300 sticky top-0 z-50 font-sans transition-all duration-300 ${
-      scrolled ? 'shadow-lg' : 'shadow-sm'
-    }`}>
+    <nav className={`bg-white border-b-2 border-gray-300 sticky top-0 z-50 font-sans transition-all duration-300 ${scrolled ? 'shadow-lg' : 'shadow-sm'
+      }`}>
       <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Logo */}
           <Link to="/" className="flex items-center group -ml-8 lg:-ml-12">
-            <img 
-              src={logo} 
-              alt="IAESTE Logo" 
+            <img
+              src={logo}
+              alt="IAESTE Logo"
               className="h-20 w-auto object-contain group-hover:scale-105 transition-all duration-300 ease-out"
             />
           </Link>
@@ -302,15 +293,7 @@ export default function Navbar() {
               <DropdownLink to="/contact">Contact</DropdownLink>
             </DesktopDropdown>
 
-            <DesktopDropdown
-              isOpen={galleryDropdown}
-              setIsOpen={setGalleryDropdown}
-              timeoutRef={galleryTimeoutRef}
-              buttonLabel="Gallery"
-            >
-              <DropdownLink to="/gallery/rhythm">Rhythm</DropdownLink>
-              <DropdownLink to="/gallery/membership-drive">Membership Drive</DropdownLink>
-            </DesktopDropdown>
+            <NavItem to="/gallery" label="Gallery" />
 
             <NavItem to="/membership" label="Membership" />
 
@@ -348,7 +331,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-700 hover:text-[#003F68] focus:outline-none p-2 transition-all duration-300 hover:scale-110"
             >
@@ -360,16 +343,15 @@ export default function Navbar() {
 
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 top-20"
           onClick={closeMobileMenu}
         ></div>
       )}
 
       {/* Mobile Slide-in Menu */}
-      <div className={`md:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
-        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
+      <div className={`md:hidden fixed top-20 right-0 h-[calc(100vh-5rem)] w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
         <div className="flex flex-col h-full overflow-y-auto bg-gradient-to-b from-white via-gray-50/30 to-white">
           <div className="flex-1 px-3 py-6">
             <MobileDropdown
@@ -381,21 +363,20 @@ export default function Navbar() {
               <MobileDropdownLink to="/faq" onClick={closeMobileMenu}>FAQ</MobileDropdownLink>
               <MobileDropdownLink to="/contact" onClick={closeMobileMenu}>Contact</MobileDropdownLink>
             </MobileDropdown>
-            
-            <MobileDropdown
-              isOpen={galleryMobileDropdown}
-              setIsOpen={setGalleryMobileDropdown}
-              label="Gallery"
+
+            <MobileNavLink
+              to="/gallery"
               icon={<GalleryIcon />}
+              onClick={closeMobileMenu}
             >
-              <MobileDropdownLink to="/gallery/rhythm" onClick={closeMobileMenu}>Rhythm</MobileDropdownLink>
-              <MobileDropdownLink to="/gallery/membership-drive" onClick={closeMobileMenu}>Membership Drive</MobileDropdownLink>
-            </MobileDropdown>
-            
+              Gallery
+            </MobileNavLink>
+
+
             <MobileNavLink to="/membership" icon={<UsersIcon />} onClick={closeMobileMenu}>
               Membership
             </MobileNavLink>
-            
+
             <MobileDropdown
               isOpen={departmentMobileDropdown}
               setIsOpen={setDepartmentMobileDropdown}
@@ -416,11 +397,11 @@ export default function Navbar() {
               <MobileDropdownLink to="/testimonials/incoming" onClick={closeMobileMenu}>Incoming</MobileDropdownLink>
             </MobileDropdown>
           </div>
-          
+
           {/* Join Membership Button - Fixed at Bottom */}
           <div className="p-5 pt-3 border-t border-gray-200/80 bg-gradient-to-b from-white via-gray-50/50 to-white backdrop-blur-sm">
-            <Link 
-              to="/membership" 
+            <Link
+              to="/membership"
               onClick={closeMobileMenu}
               className="group relative block w-full text-center bg-[#003F68] text-white px-6 py-4 rounded-xl font-bold text-base hover:bg-[#003F68] active:scale-[0.98] transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden"
             >

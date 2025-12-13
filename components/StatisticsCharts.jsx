@@ -9,6 +9,8 @@ import {
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import "chart.js/auto";
+
 
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
@@ -27,14 +29,14 @@ export default function StatisticsCharts() {
   };
 
   const chartCardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
       y: 50,
       rotateX: -15
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       y: 0,
       rotateX: 0,
@@ -48,13 +50,13 @@ export default function StatisticsCharts() {
   };
 
   const chartVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0,
       rotate: -180
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       rotate: 0,
       transition: {
@@ -67,13 +69,13 @@ export default function StatisticsCharts() {
   };
 
   const countryBadgeVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0,
       y: 10
     },
-    visible: (i) => ({ 
-      opacity: 1, 
+    visible: (i) => ({
+      opacity: 1,
       scale: 1,
       y: 0,
       transition: {
@@ -86,13 +88,13 @@ export default function StatisticsCharts() {
   };
 
   const legendItemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0,
       x: -20
     },
-    visible: (i) => ({ 
-      opacity: 1, 
+    visible: (i) => ({
+      opacity: 1,
       scale: 1,
       x: 0,
       transition: {
@@ -105,13 +107,13 @@ export default function StatisticsCharts() {
   };
 
   const headerVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: -30,
       scale: 0.9
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -227,7 +229,7 @@ export default function StatisticsCharts() {
       },
       tooltip: {
         callbacks: {
-          label: function(context) {
+          label: function (context) {
             return `${context.label}: ${context.parsed}%`;
           }
         },
@@ -311,14 +313,14 @@ export default function StatisticsCharts() {
           viewport={{ once: true, margin: "-50px" }}
           className="text-center mb-10 sm:mb-12"
         >
-          <motion.h2 
+          <motion.h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 tracking-tight"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Statistics
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -330,7 +332,7 @@ export default function StatisticsCharts() {
         </motion.div>
 
         {/* Charts Container */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -340,7 +342,7 @@ export default function StatisticsCharts() {
           {/* Outgoing Chart */}
           <motion.div
             variants={chartCardVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.02,
               y: -5,
               transition: { type: "spring", stiffness: 300, damping: 20 }
@@ -348,7 +350,7 @@ export default function StatisticsCharts() {
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
             style={{ perspective: "1000px" }}
           >
-            <motion.div 
+            <motion.div
               className="bg-[#003F68] text-white px-6 py-3 rounded-lg mb-6 text-center"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -357,22 +359,22 @@ export default function StatisticsCharts() {
             >
               <h3 className="text-xl sm:text-2xl font-bold">Outgoing</h3>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="relative h-64 sm:h-80 mb-6"
               variants={chartVariants}
             >
               <Doughnut data={outgoingData} options={chartOptions} plugins={[ChartDataLabels]} />
             </motion.div>
-            
+
             {/* Countries List */}
-            <motion.div 
+            <motion.div
               className="mb-4 bg-gray-50 rounded-lg p-3 max-h-44 overflow-y-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <motion.h4 
+              <motion.h4
                 className="text-xs font-semibold text-[#003F68] mb-2 text-center"
                 whileHover={{ scale: 1.05 }}
               >
@@ -380,8 +382,8 @@ export default function StatisticsCharts() {
               </motion.h4>
               <div className="space-y-2">
                 {Object.entries(outgoingCountries).map(([year, countries], yearIdx) => (
-                  <motion.div 
-                    key={year} 
+                  <motion.div
+                    key={year}
                     className="border-l-2 border-[#003F68]/30 pl-2"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -391,16 +393,16 @@ export default function StatisticsCharts() {
                     <p className="text-xs font-semibold text-[#003F68] mb-1">{year}:</p>
                     <div className="flex flex-wrap gap-1">
                       {countries.map((country, idx) => (
-                        <motion.span 
-                          key={idx} 
+                        <motion.span
+                          key={idx}
                           className="text-xs text-gray-700 bg-white px-2 py-0.5 rounded border border-gray-200 cursor-default"
                           custom={idx}
                           variants={countryBadgeVariants}
                           initial="hidden"
                           whileInView="visible"
                           viewport={{ once: true }}
-                          whileHover={{ 
-                            scale: 1.1, 
+                          whileHover={{
+                            scale: 1.1,
                             backgroundColor: "#003F68",
                             color: "white",
                             borderColor: "#003F68",
@@ -416,7 +418,7 @@ export default function StatisticsCharts() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="text-center mt-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -432,10 +434,10 @@ export default function StatisticsCharts() {
                   className="inline-flex items-center px-6 py-2.5 bg-[#003F68] text-white font-semibold rounded-lg hover:bg-[#005a8f] transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Outgoing
-                  <motion.svg 
-                    className="w-4 h-4 ml-2" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <motion.svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -450,7 +452,7 @@ export default function StatisticsCharts() {
           {/* Incoming Chart */}
           <motion.div
             variants={chartCardVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.02,
               y: -5,
               transition: { type: "spring", stiffness: 300, damping: 20 }
@@ -458,7 +460,7 @@ export default function StatisticsCharts() {
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300"
             style={{ perspective: "1000px" }}
           >
-            <motion.div 
+            <motion.div
               className="bg-[#003F68] text-white px-6 py-3 rounded-lg mb-6 text-center"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -467,22 +469,22 @@ export default function StatisticsCharts() {
             >
               <h3 className="text-xl sm:text-2xl font-bold">Incoming</h3>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="relative h-64 sm:h-80 mb-6"
               variants={chartVariants}
             >
               <Doughnut data={incomingData} options={chartOptions} plugins={[ChartDataLabels]} />
             </motion.div>
-            
+
             {/* Countries List */}
-            <motion.div 
+            <motion.div
               className="mb-4 bg-gray-50 rounded-lg p-3 max-h-44 overflow-y-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.5 }}
             >
-              <motion.h4 
+              <motion.h4
                 className="text-xs font-semibold text-[#003F68] mb-2 text-center"
                 whileHover={{ scale: 1.05 }}
               >
@@ -490,8 +492,8 @@ export default function StatisticsCharts() {
               </motion.h4>
               <div className="space-y-2">
                 {Object.entries(incomingCountries).map(([year, countries], yearIdx) => (
-                  <motion.div 
-                    key={year} 
+                  <motion.div
+                    key={year}
                     className="border-l-2 border-[#003F68]/30 pl-2"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -501,16 +503,16 @@ export default function StatisticsCharts() {
                     <p className="text-xs font-semibold text-[#003F68] mb-1">{year}:</p>
                     <div className="flex flex-wrap gap-1">
                       {countries.map((country, idx) => (
-                        <motion.span 
-                          key={idx} 
+                        <motion.span
+                          key={idx}
                           className="text-xs text-gray-700 bg-white px-2 py-0.5 rounded border border-gray-200 cursor-default"
                           custom={idx}
                           variants={countryBadgeVariants}
                           initial="hidden"
                           whileInView="visible"
                           viewport={{ once: true }}
-                          whileHover={{ 
-                            scale: 1.1, 
+                          whileHover={{
+                            scale: 1.1,
                             backgroundColor: "#003F68",
                             color: "white",
                             borderColor: "#003F68",
@@ -526,7 +528,7 @@ export default function StatisticsCharts() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="text-center mt-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -542,10 +544,10 @@ export default function StatisticsCharts() {
                   className="inline-flex items-center px-6 py-2.5 bg-[#003F68] text-white font-semibold rounded-lg hover:bg-[#005a8f] transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Incoming
-                  <motion.svg 
-                    className="w-4 h-4 ml-2" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <motion.svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: 0.5 }}
@@ -563,20 +565,20 @@ export default function StatisticsCharts() {
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ 
-            duration: 0.6, 
+          transition={{
+            duration: 0.6,
             delay: 0.4,
             type: "spring",
             stiffness: 100,
             damping: 15
           }}
           className="bg-white rounded-xl p-6 sm:p-8 shadow-md"
-          whileHover={{ 
+          whileHover={{
             boxShadow: "0 20px 40px -10px rgba(0, 63, 104, 0.2)",
             transition: { duration: 0.3 }
           }}
         >
-          <motion.h4 
+          <motion.h4
             className="text-lg sm:text-xl font-bold text-gray-800 mb-4 text-center"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -593,7 +595,7 @@ export default function StatisticsCharts() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.15,
                   y: -3,
                   transition: { type: "spring", stiffness: 400 }
@@ -602,13 +604,13 @@ export default function StatisticsCharts() {
                 <motion.div
                   className="w-4 h-4 rounded-full"
                   style={{ backgroundColor: item.color }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.3,
                     boxShadow: `0 0 10px ${item.color}`,
                     transition: { type: "spring", stiffness: 400 }
                   }}
                 />
-                <motion.span 
+                <motion.span
                   className="text-sm sm:text-base font-medium text-gray-700 group-hover:text-[#003F68] transition-colors"
                   whileHover={{ fontWeight: "bold" }}
                 >

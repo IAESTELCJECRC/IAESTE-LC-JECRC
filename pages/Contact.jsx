@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkIcon from "@mui/icons-material/Link";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SendIcon from "@mui/icons-material/Send";
 
+
 const Contact = () => {
+    const formRef = useRef();
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -37,15 +41,39 @@ const Contact = () => {
         setFocused({ ...focused, [field]: false });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
-        setTimeout(() => {
-            setIsSubmitting(false);
-            alert("Thank you for your message! We'll get back to you soon.");
-            setForm({ name: "", email: "", phone: "", message: "" });
-        }, 1500);
+
+        // Replace these with your actual Service ID, Template ID, and Public Key from EmailJS
+        // Sign up at https://www.emailjs.com/
+        const SERVICE_ID = "service_vvr4t41";
+        const TEMPLATE_ID = "template_6z7r0va";
+        const PUBLIC_KEY = "evpRcif44pGqLT8BE";
+
+        if (SERVICE_ID === "service_sandbox" || PUBLIC_KEY === "public_key_sandbox") {
+            // Simulate success for demonstration/development if keys are not set
+            setTimeout(() => {
+                console.log("Simulating EmailJS send with data:", form);
+                alert("Message sent! (Simulation Mode: Update EmailJS keys in Contact.jsx to send real emails)");
+                setForm({ name: "", email: "", phone: "", message: "" });
+                setIsSubmitting(false);
+            }, 1000);
+            return;
+        }
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+            .then((result) => {
+                console.log(result.text);
+                alert("Thank you! Your message has been sent.");
+                setForm({ name: "", email: "", phone: "", message: "" });
+            }, (error) => {
+                console.log(error.text);
+                alert("Failed to send message. Please check your internet connection or EmailJS configuration.");
+            })
+            .finally(() => {
+                setIsSubmitting(false);
+            });
     };
 
     const containerVariants = {
@@ -124,11 +152,11 @@ const Contact = () => {
     ];
 
     return (
-        <div style={{ 
-            minHeight: "100vh", 
+        <div style={{
+            minHeight: "100vh",
             background: "linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%)",
-            padding: "40px 20px",
-            paddingTop: "120px"
+            padding: "40px clamp(16px, 4vw, 20px)",
+            paddingTop: "80px"
         }}>
             <motion.div
                 variants={containerVariants}
@@ -168,81 +196,11 @@ const Contact = () => {
                     </motion.p>
                 </motion.div>
 
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                    gap: "32px",
-                    marginBottom: "60px"
-                }}>
-                    {contactInfo.map((info, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            whileHover={{
-                                scale: 1.03,
-                                y: -8,
-                                transition: { duration: 0.3 }
-                            }}
-                            style={{
-                                background: "#ffffff",
-                                padding: "32px",
-                                borderRadius: "20px",
-                                boxShadow: "0 10px 30px rgba(11, 61, 89, 0.1)",
-                                border: "1px solid rgba(11, 61, 89, 0.1)",
-                                transition: "all 0.3s ease",
-                                cursor: "default"
-                            }}
-                        >
-                            <motion.div
-                                whileHover={{ rotate: [0, -10, 10, 0] }}
-                                transition={{ duration: 0.5 }}
-                                style={{
-                                    width: "56px",
-                                    height: "56px",
-                                    borderRadius: "16px",
-                                    background: `${info.color}15`,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    marginBottom: "20px",
-                                    color: info.color
-                                }}
-                            >
-                                {info.icon}
-                            </motion.div>
-                            <h3 style={{
-                                fontSize: "1.1rem",
-                                fontWeight: 700,
-                                color: "#0B3D59",
-                                marginBottom: "8px"
-                            }}>
-                                {info.title}
-                            </h3>
-                            <p style={{
-                                fontSize: "0.95rem",
-                                color: "#333",
-                                fontWeight: 600,
-                                marginBottom: "4px",
-                                lineHeight: 1.5
-                            }}>
-                                {info.content}
-                            </p>
-                            {info.subContent && (
-                                <p style={{
-                                    fontSize: "0.9rem",
-                                    color: "#666",
-                                    lineHeight: 1.5
-                                }}>
-                                    {info.subContent}
-                                </p>
-                            )}
-                        </motion.div>
-                    ))}
-                </div>
+
 
                 <div style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
                     gap: "32px"
                 }}>
                     <motion.div
@@ -269,7 +227,7 @@ const Contact = () => {
                             Send Us a Message
                         </h2>
 
-                        <form onSubmit={handleSubmit}>
+                        <form ref={formRef} onSubmit={handleSubmit}>
                             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                                 <motion.div
                                     whileFocus={{ scale: 1.02 }}
@@ -462,6 +420,8 @@ const Contact = () => {
                                         </>
                                     )}
                                 </motion.button>
+
+
                             </div>
                         </form>
                     </motion.div>
@@ -497,6 +457,37 @@ const Contact = () => {
                             }}>
                                 Follow us on social media to stay updated with our latest events, news, and opportunities.
                             </p>
+
+                            <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginBottom: "40px" }}>
+                                {contactInfo.map((info, index) => (
+                                    <div key={index} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                                        <div style={{
+                                            padding: "12px",
+                                            borderRadius: "12px",
+                                            background: `${info.color}15`,
+                                            color: info.color,
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center"
+                                        }}>
+                                            {info.icon}
+                                        </div>
+                                        <div>
+                                            <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0B3D59", margin: "0 0 4px 0" }}>
+                                                {info.title}
+                                            </h3>
+                                            <p style={{ fontSize: "0.95rem", color: "#333", margin: "0 0 2px 0", wordBreak: "break-all" }}>
+                                                {info.content}
+                                            </p>
+                                            {info.subContent && (
+                                                <p style={{ fontSize: "0.85rem", color: "#666", margin: 0 }}>
+                                                    {info.subContent}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
                         <div style={{

@@ -44,7 +44,7 @@ export default function TeamGrid() {
     <section className="py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-10 sm:mb-12 text-center">
-          CORE TEAM
+          MEET OUR BOARD
         </h2>
 
         {/* Advisor Section */}

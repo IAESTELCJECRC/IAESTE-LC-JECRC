@@ -1,52 +1,47 @@
 [
   {
-    "id": "outgoing",
-    "title": "Outgoing Department",
-    "summary": "Helps students find and apply for international internships.",
-    "description": "The Outgoing Department assists students in discovering global internship opportunities, managing applications, and providing support throughout the entire process from application to placement.",
-    "icon": "🌍"
-  },
-  {
-    "id": "incoming",
-    "title": "Incoming Department",
-    "summary": "Manages international students coming to India for internships.",
-    "description": "The Incoming Department coordinates with international students, handles their accommodation, organizes cultural activities, and ensures a smooth experience during their stay in India.",
-    "icon": "🤝"
-  },
-   {
-    "id": "public-relations",
-    "title": "Public Relations Department",
-    "summary": "Promotes IAESTE LC JECRC through various channels and events.",
-    "description": "The Marketing Department is responsible for creating awareness about IAESTE programs, managing social media presence, organizing promotional events, and building the brand identity of the local committee.",
-    "icon": "🤝"
-   },
-  {
     "id": "hr",
     "title": "Human Resources Department",
-    "summary": "Organizes workshops, cultural events, and networking sessions.",
-    "description": "The Events Department plans and executes various activities including workshops, cultural exchange programs, networking events, and social gatherings to foster community engagement.",
-    "icon": "📢"
-  },
-  {
-    "id": "Admin",
-    "title": "Adminstration Department",
-    "summary": "Assists with visa applications, paperwork, and official documentation.",
-    "description": "The Documentation Department provides crucial support for visa applications, passport processing, and all necessary paperwork required for international travel and internships.",
-    "icon": "📄"
+    "summary": "Handle operations, organizes workshops, cultural events, and networking sessions.",
+    "description": "The Human Resources Department plans and executes various activities including workshops, programs, networking events, and social gatherings to foster community engagement."
   },
   {
     "id": "it",
     "title": "Information Technology & Data Analytics Department",
     "summary": "Maintains website, IT infrastructure, and digital platforms.",
-    "description": "The Technical Department manages the organization's digital presence, maintains the website, handles IT infrastructure, and develops tools to streamline operations and member services.",
-    "icon": "💻"
+    "description": "The ID-DA Department manages the organization's digital presence, maintains the website, handles IT infrastructure, and develops tools to streamline operations and member services."
   },
+  {
+    "id": "incoming",
+    "title": "Incoming Department",
+    "summary": "Manages international students coming to India for internships.",
+    "description": "The Incoming Department coordinates with international students, handles their accommodation, organizes cultural activities, and ensures a smooth experience during their stay in India."
+  },
+  {
+    "id": "outgoing",
+    "title": "Outgoing Department",
+    "summary": "Helps students find and apply for international internships.",
+    "description": "The Outgoing Department assists students in discovering global internship opportunities, managing applications, and providing support throughout the entire process from application to placement."
+  },
+  
+  {
+    "id": "Admin",
+    "title": "Adminstration Department",
+    "summary": "Assists with offer analysis ,exchange of offers ,applications, paperwork, and official documentation.",
+    "description": "The Adminstration Department provides crucial support for applications, passport processing, and all necessary paperwork required for international travel and internships."
+  },
+   {
+    "id": "public-relations",
+    "title": "Public Relations Department",
+    "summary": "Promotes IAESTE LC JECRC through various channels and events ,handles digital presence of IAESTE LC JECRC.",
+    "description": "The Public Relations Department is responsible for creating awareness about IAESTE programs, managing social media presence, organizing promotional events, and building the brand identity of the local committee."
+  },
+  
   {
     "id": "cra",
     "title": "Corporate Relations & Alumni Department",
-    "summary": "Builds relationships with partners, sponsors, and stakeholders.",
-    "description": "The Public Relations Department maintains relationships with corporate partners, educational institutions, sponsors, and alumni to support the organization's mission and growth.",
-    "icon": "📷"
+    "summary": "Builds relationships with corporates , sponsors, and stakeholders.",
+    "description": "The Corporate Relations & Alumni Department maintains relationships with corporate partners, educational institutions, sponsors, and alumni to support the organization's mission and growth."
   }
 ]
 

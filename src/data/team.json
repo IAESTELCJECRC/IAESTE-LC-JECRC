@@ -21,33 +21,69 @@
     "img": "src/assets/images/imgv2.jpg"
   },
   {
-    "id": "m3",
-    "name": "Kanishka Nama",
-    "role": "Outgoing Department Head",
+    "id": "m10",
+    "name": "Devansh Gupta",
+    "role": "Head , Human Resource  ",
     
-    "img": "src/assets/images/imgv15.jpg"
-  },
-  {
-    "id": "m4",
-    "name": "Aarna Modi",
-    "role": "Incoming Department Head",
-    
-    "img": "src/assets/images/imgv5.jpg"
-  },
-  {
-    "id": "m5",
-    "name": "Ishita Ahluwalia",
-    "role": "Public Relations Head",
-   
-    "img": "src/assets/images/imgv9.jpg"
+    "img": "src/assets/images/imgv3.jpg"
   },
   {
     "id": "m6",
     "name": "Rakshita Rathore",
-    "role": "Human Resource Deputy Head ",
+    "role": "Deputy Head , Human Resource  ",
     
     "img": "src/assets/images/imgv4.jpg"
   },
+  {
+    "id": "m9",
+    "name": "Vikram Saini",
+    "role": "Head , Information Technology & Data Analytics",
+    
+    "img": "src/assets/images/imgv7.jpg"
+  },
+  {
+    "id": "m4",
+    "name": "Aarna Modi",
+    "role": "Head , Incoming Exchange",
+    
+    "img": "src/assets/images/imgv5.jpg"
+  },
+  {
+    "id": "Incoming & IT-DA Deputy Head",
+    "name": "Pratham Jain",
+    "role": "Deputy Head , Incoming Exchange and Information Technology & Data Analytics",
+    "img": "src/assets/images/imgv6.jpg"
+  },
+   {
+    "id": "m5",
+    "name": "Ishita Ahluwalia",
+    "role": "Head , Public Relations ",
+   
+    "img": "src/assets/images/imgv9.jpg"
+  },
+  {
+    "id": "m11",
+    "name": "Palak Kulshrestha",
+    "role": "Deputy Head , Public Relations ",
+    "img": "src/assets/images/imgv12.jpg"
+  },
+  {
+    "id": "m8",
+    "name": "Samyak Jain",
+    "role": "Head , Administration ",
+    
+    "img": "src/assets/images/imgv8.jpg"
+  },
+  {
+    "id": "m3",
+    "name": "Kanishka Nama",
+    "role": "Head , Outgoing Exchange",
+    
+    "img": "src/assets/images/imgv15.jpg"
+  },
+  
+ 
+  
   {
     "id": "m7",
     "name": "Harshita Soni",
@@ -55,45 +91,17 @@
     
     "img": "src/assets/images/imgv14.jpg"
   },
-  {
-    "id": "m8",
-    "name": "Samyak Jain",
-    "role": "Adminstration Head",
-    
-    "img": "src/assets/images/imgv8.jpg"
-  },
-  {
-    "id": "m9",
-    "name": "Vikram Saini",
-    "role": "IT-DA Head",
-    
-    "img": "src/assets/images/imgv7.jpg"
-  },
-  {
-    "id": "m10",
-    "name": "Devansh Gupta",
-    "role": "Human Resource Head ",
-    
-    "img": "src/assets/images/imgv3.jpg"
-  },
-  {
-    "id": "m11",
-    "name": "Palak Kulshrestha",
-    "role": "Public Relations Deputy Head",
-    "img": "src/assets/images/imgv12.jpg"
-  },
+  
+  
+  
+  
   {
     "id": "m12",
     "name": "Jatin Mishra",
     
-    "role": "Corprate Relations & Alumni Head",
+    "role": "Head , Corporate Relations & Alumni ",
     "img": "src/assets/images/imgv10.jpg"
-  },
-  {
-    "id": "Incoming & IT-DA Deputy Head",
-    "name": "Pratham Jain",
-    "role": "Incoming & IT-DA Deputy Head",
-    "img": "src/assets/images/imgv6.jpg"
   }
+  
 ]
 

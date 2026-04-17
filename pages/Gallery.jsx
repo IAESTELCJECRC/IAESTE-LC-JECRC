@@ -1,8 +1,8 @@
 // src/pages/Gallery.jsx
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 /**
  * Dynamic scan for images from the assets folder.
@@ -10,28 +10,22 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
  */
 const imageModules = import.meta.glob("../src/assets/images/**/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,svg,avif,AVIF}", { eager: true });
 
-// --- Mappings for better display names and drive links ---
+// --- Mappings for better display names ---
 const NAME_MAP = {
     'Membership_Drive': 'Membership Drive 2025',
-    'Rythm_2026': 'Rhythm 2026',
+    'Rhythm 2026': 'Rhythm 2026',
     'Womens_Day': "Women's Day 2025",
     'IAESTE X Zarurat': 'IAESTE X Zarurat',
-    'Faliciatation Ceremony': 'Felicitation Ceremony 2025',
+    'Felicitation Ceremony': 'Felicitation Ceremony 2025',
     'Trips': 'Trips & Fun',
     'Dinner': 'Events & Culture',
     'Induction': 'Member Induction 2025-26',
-    'Aarunaya': 'Aarunya 2025',
-    'Rythm 2025': 'Rhythm 2025',
+    'Aarunya': 'Aarunya 2025',
+    'Rhythm 2025': 'Rhythm 2025',
     'Rakhi': 'Rakhi Celebration 2025',
     'Orientation': 'Orientation 2025',
     'Admin Session': 'Admin Session',
     'Team': 'IAESTE Team'
-};
-
-const DRIVE_LINKS = {
-    'Rythm_2026': 'https://drive.google.com/drive/folders/1RYTHM2026_PLACEHOLDER',
-    'Membership_Drive': 'https://drive.google.com/drive/folders/MEMBER_DRIVE_PLACEHOLDER',
-    'Dinner': 'https://drive.google.com/drive/folders/EVENTS_CULTURE_PLACEHOLDER',
 };
 
 // --- Sub-components ---
@@ -44,8 +38,24 @@ const splitEventNameAndYear = (name) => {
 
 const CategoryCard = ({ category, onSelect }) => {
     const { eventName, year } = splitEventNameAndYear(category.name);
-    const isFelicitationCard = category.id === "Faliciatation Ceremony";
-    const titleSizeClass = isFelicitationCard ? "text-lg md:text-2xl" : "text-xl md:text-3xl";
+    const longTitleCards = [
+        "Dinner",
+        "Trips",
+        "Felicitation Ceremony",
+        "IAESTE X Zarurat",
+        "Membership_Drive",
+        "Womens_Day",
+        "Rakhi",
+        "Orientation",
+        "Induction",
+        "Admin Session",
+    ];
+
+    const isLongTitleCard = longTitleCards.includes(category.id);
+    const titleSizeClass = isLongTitleCard ? "text-base md:text-2xl" : "text-xl md:text-3xl";
+    const titleWidthClass = isLongTitleCard
+        ? "max-w-[250px] md:max-w-[420px] group-hover:max-w-[94%]"
+        : "max-w-[270px] md:max-w-[420px] group-hover:max-w-[82%]";
 
     return (
         <motion.div
@@ -75,9 +85,9 @@ const CategoryCard = ({ category, onSelect }) => {
 
             <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 flex flex-col justify-end items-start text-white z-10">
                 <h2
-                    className={`font-black uppercase tracking-tight transition-all duration-500 leading-[0.95] drop-shadow-2xl md:-rotate-90 md:origin-bottom-left md:translate-x-10 md:-translate-y-10 group-hover:rotate-0 group-hover:translate-x-0 group-hover:translate-y-0 whitespace-nowrap group-hover:whitespace-normal wrap-break-word overflow-hidden text-ellipsis max-w-[270px] md:max-w-[420px] group-hover:max-w-[82%] ${titleSizeClass}`}
+                    className={`font-black uppercase tracking-tight transition-all duration-500 leading-[0.95] drop-shadow-2xl md:-rotate-90 md:origin-bottom-left md:translate-x-10 md:-translate-y-10 group-hover:rotate-0 group-hover:translate-x-0 group-hover:translate-y-0 whitespace-nowrap group-hover:whitespace-normal break-normal text-ellipsis ${isLongTitleCard ? "overflow-visible group-hover:wrap-break-word" : "overflow-hidden"} ${titleWidthClass} ${titleSizeClass}`}
                 >
-                    <span>{eventName}</span>
+                    <span className={isLongTitleCard ? "inline" : "inline-block whitespace-nowrap"}>{eventName}</span>
                     {year && <span className="ml-2 inline-block whitespace-nowrap text-[0.78em] md:text-[0.75em] font-extrabold tracking-normal">{year}</span>}
                 </h2>
 
@@ -92,8 +102,26 @@ const CategoryCard = ({ category, onSelect }) => {
     );
 };
 
-const MasonryGrid = ({ items, driveLink }) => {
+const MasonryGrid = ({ items }) => {
     const [displayLimit, setDisplayLimit] = useState(12);
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollTop(window.scrollY > 350);
+        };
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     return (
         <div className="pb-32">
@@ -119,7 +147,7 @@ const MasonryGrid = ({ items, driveLink }) => {
                 ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-12 mb-24 px-4 gap-8">
+            <div className="flex items-center justify-center mt-12 mb-24 px-4">
                 {items.length > displayLimit && (
                     <button
                         onClick={() => setDisplayLimit(prev => prev + 12)}
@@ -128,24 +156,25 @@ const MasonryGrid = ({ items, driveLink }) => {
                         LOAD MORE PHOTOS
                     </button>
                 )}
-
-                <div className="max-w-xl w-full text-center p-10 rounded-[3rem] bg-white border border-[#0B3D59]/10 shadow-2xl">
-                    <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter text-[#0B3D59]">
-                        Discover More
-                    </h3>
-                    <p className="text-[#0B3D59]/70 mb-8 font-medium">
-                        We have thousands of memories captured. Explore our full high-resolution archive on Google Drive for {items.length > displayLimit ? "all the remaining" : "more"} photos.
-                    </p>
-                    <a
-                        href={driveLink || "https://drive.google.com/drive/folders/17R9d7oFEXXXXX"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-10 py-5 bg-[#0B3D59] text-white rounded-2xl font-black text-lg shadow-xl hover:shadow-[#0B3D59]/40 hover:-translate-y-1 transition-all duration-300"
-                    >
-                        <OpenInNewIcon /> VIEW ARCHIVE ON DRIVE
-                    </a>
-                </div>
             </div>
+
+            <AnimatePresence>
+                {showScrollTop && (
+                    <motion.button
+                        type="button"
+                        aria-label="Scroll to top"
+                        onClick={scrollToTop}
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed bottom-5 right-4 md:bottom-10 md:right-8 z-50 inline-flex items-center gap-2 px-4 md:px-5 py-3 rounded-full bg-[#0B3D59] text-white font-black text-xs md:text-sm tracking-wider shadow-xl shadow-[#0B3D59]/30 hover:bg-[#0B3D59]/90 hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                        <KeyboardArrowUpIcon fontSize="small" />
+                        <span className="hidden sm:inline">TOP</span>
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
@@ -154,6 +183,11 @@ const MasonryGrid = ({ items, driveLink }) => {
 
 export default function Gallery() {
     const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const handleSelectCategory = (category) => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        setSelectedCategory(category);
+    };
 
     // Group images dynamicly
     const categories = useMemo(() => {
@@ -170,7 +204,7 @@ export default function Gallery() {
             const fileName = parts[parts.length - 1];
 
             // Ignore root images for the dynamic menu
-            if (folder === 'images') return;
+            if (folder === 'images' || folder === 'Team') return;
 
             if (!data[folder]) {
                 data[folder] = {
@@ -178,14 +212,27 @@ export default function Gallery() {
                     name: NAME_MAP[folder] || folder.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
                     image: module.default,
                     items: [],
-                    driveLink: DRIVE_LINKS[folder] || null,
-                    isNew: folder.toLowerCase().includes('2026') || folder.toLowerCase().includes('induction') || folder.toLowerCase().includes('aarunaya')
+                    isNew: folder.toLowerCase().includes('2026') || folder.toLowerCase().includes('induction') || folder.toLowerCase().includes('aarunya')
                 };
             }
+
+            if (folder === 'Trips' && /^Trip\s*10\b/i.test(fileName)) {
+                data[folder].image = module.default;
+            }
+
+            if (folder === 'Membership_Drive' && /^membership\s*4\b/i.test(fileName)) {
+                data[folder].image = module.default;
+            }
+
             data[folder].items.push({
                 image: module.default,
-                title: fileName.replace(/_/g, ' ').replace(/-/g, ' ').split('.')[0]
+                title: fileName.replace(/_/g, ' ').replace(/-/g, ' ').split('.')[0],
+                sortKey: fileName
             });
+        });
+
+        Object.values(data).forEach((folderData) => {
+            folderData.items.sort((a, b) => a.sortKey.localeCompare(b.sortKey, undefined, { numeric: true, sensitivity: 'base' }));
         });
 
         // Group sorting: New ones first, then alphabetical
@@ -229,7 +276,7 @@ export default function Gallery() {
                                     <CategoryCard
                                         key={cat.id}
                                         category={cat}
-                                        onSelect={setSelectedCategory}
+                                        onSelect={handleSelectCategory}
                                     />
                                 ))}
                             </div>
@@ -264,7 +311,6 @@ export default function Gallery() {
 
                             <MasonryGrid
                                 items={selectedCategory.items}
-                                driveLink={selectedCategory.driveLink}
                             />
                         </div>
                     </motion.div>

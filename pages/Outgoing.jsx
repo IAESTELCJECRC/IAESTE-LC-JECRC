@@ -345,20 +345,23 @@ export default function Outgoing() {
             />
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          <div className="bg-[#EAF4FF] rounded-xl p-4 text-center">
-            <p className="text-sm text-gray-600 mb-1">Total Interns</p>
-            <p className="text-2xl font-bold text-[#003F68]">
-              <Counter target={totalInterns} duration={1600} play={playCounters} />
-            </p>
+        <div className="grid grid-cols-1 mt-8">
+            <div className="group w-full bg-linear-to-br from-[#EAF4FF] via-white to-[#F5FAFF] rounded-2xl p-6 text-center border border-blue-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-center">
+              
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+                Total Interns
+              </p>
+
+              <p className="text-2xl md:text-4xl font-extrabold text-[#003F68] leading-tight group-hover:scale-105 transition-transform duration-300">
+                <Counter target={totalInterns} duration={1600} play={playCounters} />
+              </p>
+
+              {/* subtle divider */}
+              <div className="mt-4 h-0.5 w-12 mx-auto bg-[#003F68]/60 rounded-full group-hover:w-20 transition-all duration-300"></div>
+
+            </div>
           </div>
-          
-          <div className="bg-[#EAF4FF] rounded-xl p-4 text-center">
-            <p className="text-sm text-gray-600 mb-1">Peak Year</p>
-            <p className="text-2xl font-bold text-[#003F68]">{peakYear}</p>
-          </div>
-        </div>
-      </section>
+                </section>
       <section className="max-w-6xl mx-auto mt-12 p-6">
         <div>
           <h2 className="text-2xl font-bold text-[#003F68]">Outgoing Exchange Statistics</h2>
@@ -425,7 +428,7 @@ export default function Outgoing() {
                   <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 transition-all duration-300 flex flex-col md:flex-row gap-6 relative max-w-6xl mx-auto">
                     <div className="shrink-0 mx-auto md:mx-0">
                       <div className="w-[250px] h-[250px] rounded-2xl overflow-hidden border-4 border-[#003F68] relative mx-auto">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
+                        <div className="absolute inset-0 bg-linear-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
                           <svg className="w-full h-full opacity-30" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
                             <path d="M50,50 Q100,30 150,50 T200,50" stroke="#003F68" strokeWidth="1" fill="none" opacity="0.3"/>
                             <path d="M30,80 Q80,60 130,80 T200,80" stroke="#003F68" strokeWidth="1" fill="none" opacity="0.3"/>
@@ -484,7 +487,7 @@ export default function Outgoing() {
                   <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 transition-all duration-300 flex flex-col md:flex-row gap-6 relative max-w-6xl mx-auto">
                     <div className="shrink-0 mx-auto md:mx-0">
                       <div className="w-[250px] h-[250px] rounded-2xl overflow-hidden border-4 border-[#003F68] relative mx-auto">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
+                        <div className="absolute inset-0 bg-linear-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
                           <svg className="w-full h-full opacity-30" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
                             <path d="M50,50 Q100,30 150,50 T200,50" stroke="#003F68" strokeWidth="1" fill="none" opacity="0.3"/>
                             <path d="M30,80 Q80,60 130,80 T200,80" stroke="#003F68" strokeWidth="1" fill="none" opacity="0.3"/>

@@ -117,7 +117,7 @@ export default function Home() {
     {
       id: 3,
       title: "Professional Network",
-      description: "Join a global family of alumni, professionals and mentors who can support your future goals.",
+      description: "Join a global family of alumni, professional experts and mentors who can support your future goals.",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -392,18 +392,19 @@ export default function Home() {
             {[
               {
                 id: 1,
-                name: "Adnan Ayman Adnan Abutahnat",
-                location: "Palestine",
-                testimonial: "India was not just a training destination for me, but a journey that changed my life. Living far from home taught me independence, patience, and the ability to face challenges with confidence.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Adnan1.jpeg",
+                name: "Tasuku Nagata",
+                location: "Japan",
+                testimonial: "This internship started as a short summer project but turned into a great opportunity to consolidate my knowledge and work with machine learning techniques for the first time.",
+                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Tasuku.jpeg",
                 type: "Incoming"
+                
               },
               {
                 id: 2,
-                name: "Homa Ramezani",
-                location: "Iran",
-                testimonial: "I spent about 6 weeks at JECRC University in Jaipur. Besides working on projects, I had the chance to travel to different cities in India and enjoy the beauty of this AMAZING country.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Homa.jpeg",
+                name: "Emna",
+                location: "Tunisia",
+                testimonial: "My IAESTE journey at JECRC University, Jaipur, was transformative, blending vibrant culture with unparalleled technical learning. The friendships and connections made here feel like family.",
+                image: "https://www.iaestelcjecrc.com/assets/img/avatars/emna.jpg",
                 type: "Incoming"
               },
               {
@@ -415,11 +416,11 @@ export default function Home() {
                 type: "Outgoing"
               },
               {
-                id: 4,
-                name: "Emna",
-                location: "Tunisia",
-                testimonial: "My IAESTE journey at JECRC University, Jaipur, was transformative, blending vibrant culture with unparalleled technical learning. The friendships and connections made here feel like family.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/emna.jpg",
+                id: 4,              
+                name: "Homa Ramezani",
+                location: "Iran",
+                testimonial: "I spent about 6 weeks at JECRC University in Jaipur. Besides working on projects, I had the chance to travel to different cities in India and enjoy the beauty of this AMAZING country.",
+                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Homa.jpeg",
                 type: "Incoming"
               },
               {
@@ -431,11 +432,11 @@ export default function Home() {
                 type: "Outgoing"
               },
               {
-                id: 6,
-                name: "Tasuku Nagata",
-                location: "Japan",
-                testimonial: "This internship started as a short summer project but turned into a great opportunity to consolidate my knowledge and work with machine learning techniques for the first time.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Tasuku.jpeg",
+                id: 1,
+                name: "Adnan Ayman Adnan Abutahnat",
+                location: "Palestine",
+                testimonial: "India was not just a training destination for me, but a journey that changed my life. Living far from home taught me independence, patience, and the ability to face challenges with confidence.",
+                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Adnan1.jpeg",
                 type: "Incoming"
               }
             ].map((testimonial, index) => (

@@ -533,16 +533,19 @@ export default function Incoming() {
             />
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          <div className="bg-[#EAF4FF] rounded-xl p-4 text-center">
-            <p className="text-sm text-gray-600 mb-1">Total Incoming</p>
-            <p className="text-2xl font-bold text-[#003F68]">
+        <div className="mt-8">
+          <div className="group w-full bg-linear-to-br from-[#EAF4FF] via-white to-[#F5FAFF] rounded-2xl p-6 text-center border border-blue-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-center">
+            
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+              Total Incoming
+            </p>
+
+            <p className="text-2xl md:text-4xl font-extrabold text-[#003F68] leading-tight group-hover:scale-105 transition-transform duration-300">
               <Counter target={totalInterns} duration={1600} play={playCounters} />
             </p>
-          </div>
-          <div className="bg-[#EAF4FF] rounded-xl p-4 text-center">
-            <p className="text-sm text-gray-600 mb-1">Peak Year</p>
-            <p className="text-2xl font-bold text-[#003F68]">{peakYear}</p>
+
+            <div className="mt-4 h-0.5 w-12 mx-auto bg-[#003F68]/60 rounded-full group-hover:w-20 transition-all duration-300"></div>
+
           </div>
         </div>
       </section>
@@ -585,7 +588,7 @@ export default function Incoming() {
                         </span>
                       ))
                     ) : (
-                      <p className="text-sm text-gray-500 italic">No country data available for this year</p>
+                      <p className="text-sm text-gray-500 italic">No Interns in this exchange year</p>
                     )}
                   </div>
                 </div>
@@ -615,7 +618,7 @@ export default function Incoming() {
                     {/* profile image */}
                     <div className="shrink-0 mx-auto md:mx-0">
                       <div className="w-[250px] h-[250px] rounded-2xl overflow-hidden border-4 border-[#003F68] relative mx-auto">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
+                        <div className="absolute inset-0 bg-linear-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
                           {/* decorative svg omitted for brevity */}
                         </div>
                         <img src={story.image} alt={story.name} width="250" height="250" className="w-[250px] h-[250px] object-cover relative z-10" loading="lazy" decoding="async" />
@@ -663,7 +666,7 @@ export default function Incoming() {
                     {/* profile image */}
                     <div className="shrink-0 mx-auto md:mx-0">
                       <div className="w-[250px] h-[250px] rounded-2xl overflow-hidden border-4 border-[#003F68] relative mx-auto">
-                        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
+                        <div className="absolute inset-0 bg-linear-to-br from-amber-50 via-amber-100 to-amber-50 opacity-40 z-0">
                           {/* decorative svg omitted for brevity */}
                         </div>
                         <img src={story.image} alt={story.name} width="250" height="250" className="w-[250px] h-[250px] object-cover relative z-10" loading="lazy" decoding="async" />

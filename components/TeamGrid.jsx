@@ -1,7 +1,19 @@
 import React from 'react';
 import TeamCard from './TeamCard';
-// Import team data - try relative path from components directory
 import teamData from '../src/data/team.json';
+
+const teamImageModules = import.meta.glob('../src/assets/images/Team/*.{avif,jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+});
+
+const getFileKey = (filePath = '') => filePath.split('/').pop()?.toLowerCase() || '';
+
+const teamImageMap = Object.fromEntries(
+  Object.entries(teamImageModules).map(([filePath, assetUrl]) => [getFileKey(filePath), assetUrl])
+);
+
+const resolveTeamImage = (imagePath) => teamImageMap[getFileKey(imagePath)] || imagePath;
 
 export default function TeamGrid() {
   if (!teamData || !Array.isArray(teamData) || teamData.length === 0) {
@@ -17,8 +29,13 @@ export default function TeamGrid() {
     );
   }
 
-  const advisor = teamData.find(member => member.id === 'advisor');
-  let teamMembers = teamData.filter(member => member.id !== 'advisor');
+  const resolvedTeamData = teamData.map((member) => ({
+    ...member,
+    img: resolveTeamImage(member.img),
+  }));
+
+  const advisor = resolvedTeamData.find(member => member.id === 'advisor');
+  let teamMembers = resolvedTeamData.filter(member => member.id !== 'advisor');
   
   // Separate senior board members and board members
   const seniorBoardRoles = ['President', 'Vice President', 'Chief Financial Officer'];
@@ -129,4 +146,3 @@ export default function TeamGrid() {
     </section>
   );
 }
-

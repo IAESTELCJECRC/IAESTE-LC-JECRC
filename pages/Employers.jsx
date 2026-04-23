@@ -2,6 +2,25 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import EmployerHireSection from '../components/EmployerHireSection';
 
+const testimonialImageModules = {
+  ...import.meta.glob('../src/assets/Interns/*.{avif,jpg,jpeg,png}', {
+    eager: true,
+    import: 'default',
+  }),
+  ...import.meta.glob('../src/assets/images/Team/*.{avif,jpg,jpeg,png}', {
+    eager: true,
+    import: 'default',
+  }),
+};
+
+const getAssetKey = (filePath = '') => filePath.split('/').pop()?.toLowerCase() || '';
+
+const testimonialImageMap = Object.fromEntries(
+  Object.entries(testimonialImageModules).map(([filePath, assetUrl]) => [getAssetKey(filePath), assetUrl])
+);
+
+const resolveTestimonialImage = (imagePath) => testimonialImageMap[getAssetKey(imagePath)] || imagePath;
+
 const hostingReasons = [
   'Strengthen the intercultural competencies of your team.',
   'Support your Corporate Social Responsibility goals through global exchange.',
@@ -77,7 +96,17 @@ export default function Employers() {
     },
   ];
 
-  const testimonials = activeTab === 'incoming' ? incomingTestimonials : outgoingTestimonials;
+  const resolvedIncomingTestimonials = incomingTestimonials.map((testimonial) => ({
+    ...testimonial,
+    image: resolveTestimonialImage(testimonial.image),
+  }));
+
+  const resolvedOutgoingTestimonials = outgoingTestimonials.map((testimonial) => ({
+    ...testimonial,
+    image: resolveTestimonialImage(testimonial.image),
+  }));
+
+  const testimonials = activeTab === 'incoming' ? resolvedIncomingTestimonials : resolvedOutgoingTestimonials;
 
   return (
     <div className="min-h-screen bg-white text-gray-900">

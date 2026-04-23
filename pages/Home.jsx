@@ -203,11 +203,11 @@ export default function Home() {
           {/* Why IAESTE Section - Right */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-3 tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-3 tracking-tight">
                 WHY <span className="text-[#003F68]">IAESTE</span> ?
               </h2>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 leading-relaxed">
-                How does <span className="font-bold text-[#003F68]">IAESTE</span> benefit you as a student member?
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#06578d] leading-relaxed">
+                How does <span className="font-bold text-[#06578d]">IAESTE</span> benefit you as a student member?
               </h3>
             </div>
             

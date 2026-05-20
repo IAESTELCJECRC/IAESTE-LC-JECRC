@@ -139,21 +139,25 @@ export default function Outgoing() {
       countries: ["Nepal", "Germany", "Thailand", "Thailand", "Belarus", "Thailand", "Brazil", "Germany", "Poland", "Germany", "Turkey", "Poland"],
       students: 12
     },
-    { year: "2019-20", countries: ["Turkey(Remote)"], students: 1 },
-    { year: "2020-21", countries: ["Bangladesh(Remote)", "Yemen(Remote)"], students: 2 },
-    { year: "2021-22", countries: ["Saudi Arabia(Remote)", "Saudi Arabia(Remote)", "Turkey(Remote)", "Turkey(Remote)", "Turkey(Remote)", "Bangladesh(Remote)"], students: 6 },
-    { year: "2022-23", countries: ["Czech Republic", "Iran(Remote)", "Tanzania(Remote)", "Hong Kong"], students: 4 },
+    { year: "2019-20", countries: ["Turkey (Remote)"], students: 1 },
+    { year: "2020-21", countries: ["Bangladesh (Remote)", "Yemen (Remote)"], students: 2 },
+    { year: "2021-22", countries: ["Saudi Arabia (Remote)", "Saudi Arabia (Remote)", "Turkey (Remote)", "Turkey (Remote)", "Turkey (Remote)", "Bangladesh (Remote)"], students: 6 },
+    { year: "2022-23", countries: ["Czech Republic", "Iran (Remote)", "Tanzania (Remote)", "Hong Kong"], students: 4 },
     {
       year: "2023-24",
-      countries: ["United Arab Emirates", "Tanzania(Remote)", "Tanzania(Remote)", "Iran(Remote)", "Kenya(Remote)", "Canada", "Oman", "Tanzania(Remote)"],
+      countries: ["United Arab Emirates", "Tanzania (Remote)", "Tanzania (Remote)", "Iran (Remote)", "Kenya (Remote)", "Canada", "Oman", "Tanzania (Remote)"],
       students: 8
     },
     {
       year: "2024-25",
-      countries: ["Vietnam(Remote)", "Colombia(Remote)", "Iran(Remote)", "Palestine(Remote)", "Iran(Remote)", "Tanzania(Remote)", "Tanzania(Remote)", "Brazil", "Tajikistan(Remote)", "Oman", "Ghana(Remote)", "Burundi(Remote)", "Panama(Remote)"],
+      countries: ["Vietnam (Remote)", "Colombia (Remote)", "Iran (Remote)", "Palestine (Remote)", "Iran (Remote)", "Tanzania (Remote)", "Tanzania (Remote)", "Brazil", "Tajikistan (Remote)", "Oman", "Ghana (Remote)", "Burundi (Remote)", "Panama (Remote)"],
       students: 13
     }
   ];
+
+  data.forEach(item => {
+    item.students = item.countries.length;
+  });
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [chartType, setChartType] = useState("line");
@@ -395,11 +399,14 @@ export default function Outgoing() {
                     } md:group-hover:opacity-100 md:group-hover:max-h-[1000px]`}
                   >
                     {item.countries.length > 0 ? (
-                      item.countries.map((c, idx) => (
-                        <span key={idx} className="bg-[#003F68] text-white text-xs px-2.5 py-1 rounded-full whitespace-nowrap">
-                          {c}
-                        </span>
-                      ))
+                      [...new Set(item.countries)].map((c, idx) => {
+                        const count = item.countries.filter((country) => country === c).length;
+                        return (
+                          <span key={idx} className="bg-[#003F68] text-white text-xs px-2.5 py-1 rounded-full whitespace-nowrap">
+                            {c} ({count})
+                          </span>
+                        );
+                      })
                     ) : (
                       <p className="text-sm text-gray-500 italic">No country data available for this year</p>
                     )}

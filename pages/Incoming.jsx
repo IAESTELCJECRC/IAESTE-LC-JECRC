@@ -209,7 +209,7 @@ export default function Incoming() {
     },
     {
       year: "2021-22",
-      countries: ["Vietnam", "Ghana(Remote)"],
+      countries: ["Vietnam", "Ghana (Remote)"],
       students: 2
     },
     {
@@ -239,6 +239,7 @@ export default function Incoming() {
         "Canada",
         "Austria",
         "Norway",
+        "Norway",
         "Czech Republic",
         "Palestine",
         "Tunisia",
@@ -250,15 +251,18 @@ export default function Incoming() {
         "Iran",
         "Iran",
         "Austria",
-        "Yemen(Remote)",
-        "Bangladesh(Remote)",
-        "Japan(Remote)",
-        "Canada(Remote)",
-        "Iraq(Remote)"
+        "Yemen (Remote)",
+        "Bangladesh (Remote)",
+        "Japan (Remote)",
+        "Canada (Remote)"
       ],
       students: 20
     }
   ];
+
+  data.forEach(item => {
+    item.students = item.countries.length;
+  });
 
     const successStories = [
     {
@@ -582,11 +586,14 @@ export default function Incoming() {
                       ${expanded ? "opacity-100 max-h-[1000px]" : "opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[1000px]"}`}
                   >
                     {item.countries.length > 0 ? (
-                      item.countries.map((c, i) => (
-                        <span key={i} className="bg-[#003F68] text-white text-xs px-2.5 py-1 rounded-full whitespace-nowrap">
-                          {c}
-                        </span>
-                      ))
+                      [...new Set(item.countries)].map((c, i) => {
+                        const count = item.countries.filter((country) => country === c).length;
+                        return (
+                          <span key={i} className="bg-[#003F68] text-white text-xs px-2.5 py-1 rounded-full whitespace-nowrap">
+                            {c} ({count})
+                          </span>
+                        );
+                      })
                     ) : (
                       <p className="text-sm text-gray-500 italic">No Interns in this exchange year</p>
                     )}

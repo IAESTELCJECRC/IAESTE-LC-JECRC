@@ -16,7 +16,7 @@ const NAME_MAP = {
     'Rhythm 2026': 'JU Rhythm 2026',
     'Womens_Day': "Women's Day 2025",
     'IAESTE X Zarurat': 'IAESTE X Zarurat',
-    'Felicitation Ceremony': 'Felicitation Ceremony 2025',
+    'Felicitation Ceremony': 'SRO and Faculty Felicitation Ceremony 2025',
     'Trips': 'Trips & Fun',
     'Dinner': 'IAESTE Dinner 2025',
     'Induction': 'Induction Ceremony 2025-26',

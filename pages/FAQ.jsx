@@ -17,7 +17,7 @@ const faqsData = [
     {
         category: "Application",
         question: "How do I apply for an IAESTE internship?",
-        answer: "Become an IAESTE member to unlock exclusive opportunities. Follow the detailed application instructions shared in the IAESTE LC JECRC members’ group. For further assistance, you can contact the Head of Administration."
+        answer: "To get started, join IAESTE as a member. After that, you will be added to a WhatsApp group where internship offers are shared regularly. You can browse these offers and choose the ones that best match your field of study and skills. To apply, simply contact the Head of Administration with your interest."
     },
     {
         category: "Application",
@@ -47,7 +47,18 @@ const faqsData = [
     {
         category: "Internships",
         question: "Can IAESTE interns participate in multiple internships?",
-        answer: "Yes, students may apply again after a 6-month cooling period. A maximum of three internships is allowed, subject to satisfactory academic progress."
+        answer: "Students may participate in IAESTE internship opportunities for up to two internships within an academic year, provided they continue to maintain satisfactory academic progress and meet the program’s eligibility criteria."
+    },
+    {
+        category: "Internships",
+        question: "What are the different modes of internships offered through IAESTE?",
+        answer: `IAESTE offers internships in three different modes, depending on the offer and the host organization’s requirements:
+
+1. On-site Internships: These internships require students to travel to the host country or organization and work directly from the company, university, or research institution. This mode provides hands-on experience, cultural exposure, and the opportunity to build an international professional network.
+2. Remote Internships: In this mode, students can complete their internship virtually from their home location. Work is carried out online through digital collaboration tools, making it a flexible option while still allowing students to gain valuable international work experience.
+3. Hybrid Internships: Hybrid internships offer flexibility, allowing students to choose either the on-site mode or the remote mode for the entire internship duration, depending on the host organization’s offer and the student’s preference. This combines convenience with valuable professional exposure.
+
+The mode of internship depends on the specific offer, giving students the opportunity to choose an internship format that best suits their preferences and circumstances.`
     },
     {
         category: "General",
@@ -57,7 +68,7 @@ const faqsData = [
     {
         category: "Membership",
         question: "What are the benefits of becoming an IAESTE member?",
-        answer: "Members receive priority access to internships, personalized guidance throughout the application process, and opportunities to participate in professional and cultural exchange programs."
+        answer: "For an intern, IAESTE offers priority access to international internships alongside personalized support throughout the application and documentation process. The program facilitates professional and cultural exchange by providing assistance with logistical hurdles like visas and housing. By connecting students with technical roles abroad, it enables them to build a global network and gain practical experience while integrated into a supportive community of peers."
     },
     {
         category: "Membership",
@@ -199,7 +210,7 @@ const FAQ = () => {
                                                     transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                                                 >
                                                     <div className="px-10 pb-12 pt-6 border-t border-[#0B3D59]/5 mx-8">
-                                                        <p className="text-[#0B3D59]/70 text-lg font-bold leading-relaxed">
+                                                        <p className="text-[#0B3D59]/70 text-lg font-bold leading-relaxed whitespace-pre-line">
                                                             {faq.answer}
                                                         </p>
                                                     </div>

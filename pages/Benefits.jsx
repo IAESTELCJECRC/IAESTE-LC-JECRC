@@ -470,7 +470,7 @@ export default function Benefits() {
               },
               { 
                 value: "90+", 
-                label: "Journeys Beyond Borders",
+                label: "Students Sent Abroad",
                 icon: "🎓",
                 position: "bottom",
                 hasCounter: true

@@ -267,26 +267,6 @@ export default function Incoming() {
     const successStories = [
     {
       id: 1,
-      name: "Adnan Ayman Adnan Abutahnat",
-      location: "Palestine",
-      testimonial:
-        "India was not just a training destination for me, but a journey that changed my life. Living far from home taught me independence, patience, and the ability to face challenges with confidence. Adapting to a new culture and environment was not always easy, but it gave me the courage to grow stronger.",
-      linkedin: "#",
-      email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/Adnan1.jpeg"
-    },
-    {
-      id: 2,
-      name: "Homa Ramezani",
-      location: "Iran",
-      testimonial:
-        "I spent about 6 weeks at JECRC University in Jaipur. Besides working on projects, I had the chance to travel to different cities in India and enjoy the beauty of this AMAZING country. The beautiful temples, spicy food and incredible nature were a truly special experience for me. These experiences along with my internship created a lot of GREAT memories for me! I really want to thank IAESTE members because without their support and help this dream experience would not have been as good.",
-      linkedin: "#",
-      email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/Homa.jpeg"
-    },
-    {
-      id: 3,
       name: "Tasuku Nagata",
       location: "Japan",
       testimonial:
@@ -294,6 +274,25 @@ export default function Incoming() {
       linkedin: "#",
       email: "#",
       image: "https://www.iaestelcjecrc.com/assets/img/avatars/Tasuku.jpeg"
+    },{
+      id: 2,
+      name: "Marcin Sochacki",
+      location: "Czech Republic",
+      testimonial:
+        "This internship was a truly enriching experience that contributed to both my professional and personal growth. The supportive environment encouraged learning, creativity, and collaboration. I had the opportunity to take on meaningful responsibilities and learn from constant guidance. Overall, it was a rewarding journey that strengthened my skills and confidence for the future.",
+      linkedin: "#",
+      email: "#",
+      image: "../src/assets/Interns/Marcin.avif"
+    },
+    {
+      id: 3,
+      name: "Irene Ramírez Zumaquero",
+      location: "Spain",
+      testimonial:
+        "My internship experience was truly memorable, both professionally and personally. The team fostered a welcoming environment that felt like a family, making it easy to connect, collaborate, and grow. Alongside learning and contributing, I genuinely enjoyed the journey. It was a perfect balance of work and fun.",
+      linkedin: "#",
+      email: "#",
+      image: "../src/assets/Interns/Irene.avif"
     },
     {
       id: 4,
@@ -480,7 +479,6 @@ export default function Incoming() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold text-[#003F68]">Incoming Students Statistics</h2>
-            <p className="text-gray-600 mt-1">Records & trends for incoming interns.</p>
           </div>
 
           <div className="hidden md:flex gap-2">

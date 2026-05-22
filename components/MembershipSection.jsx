@@ -74,7 +74,7 @@ export default function MembershipSection() {
 
         <div className="text-center mt-10 sm:mt-12">
           <Link
-            to="/join"
+            to="/contact"
             className="inline-flex items-center px-8 py-3 bg-[#003F68] text-white font-semibold rounded-lg hover:bg-[#005a8f] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Join Membership

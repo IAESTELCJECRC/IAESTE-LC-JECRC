@@ -7,7 +7,7 @@ const faqsData = [
     {
         category: "Internships",
         question: "What are AGC offers?",
-        answer: "AGC offers exclusive internships tailored specifically for JECRC students through IAESTE LC JECRC. With less competition, these opportunities significantly enhance your chances of selection, offering a fantastic way to gain practical experience."
+        answer: "AGC provides exclusive internship opportunities specifically for our members through IAESTE LC JECRC. With reduced competition, these internships greatly improve your chances of selection while offering valuable hands-on experience."
     },
     {
         category: "Preparation",
@@ -19,20 +19,15 @@ const faqsData = [
         question: "How do I apply for an IAESTE internship?",
         answer: "To get started, join IAESTE as a member. After that, you will be added to a WhatsApp group where internship offers are shared regularly. You can browse these offers and choose the ones that best match your field of study and skills. To apply, simply contact the Head of Administration with your interest."
     },
-    {
-        category: "Application",
-        question: "Can I apply for multiple offers or receive more than one internship?",
-        answer: "Yes, students can apply for multiple offers and rank their preferences. If selected for more than one opportunity, IAESTE coordinates the process to help secure your top choice."
-    },
-    {
-        category: "Requirements",
-        question: "Is prior international internship experience required?",
-        answer: "No, prior international experience is not required. IAESTE internships are designed specifically for students seeking their first global professional exposure."
-    },
+    // {
+    //     category: "Application",
+    //     question: "Can I apply for multiple offers or receive more than one internship?",
+    //     answer: "Yes, students can apply for multiple offers and rank their preferences. If selected for more than one opportunity, IAESTE coordinates the process to help secure your top choice."
+    // },
     {
         category: "Requirements",
         question: "Do IAESTE internships require prior experience?",
-        answer: "While prior experience is beneficial, it is not mandatory. Employers value enthusiasm, technical foundation, and a willingness to learn."
+        answer: "Prior experience is beneficial but not mandatory, employers place greater importance on enthusiasm, a strong technical base, and the ability to learn and grow quickly."
     },
     {
         category: "Internships",
@@ -42,7 +37,7 @@ const faqsData = [
     {
         category: "Internships",
         question: "Are short-term (4-6 week) IAESTE internships available?",
-        answer: "Yes, short-term internships of 4-6 weeks are occasionally available. However, most IAESTE internships require a minimum duration of 8 weeks to ensure meaningful technical learning and compliance with visa regulations."
+        answer: "Yes, 4 to 6-week IAESTE internships are available and can offer valuable learning opportunities. A key advantage of these internships is that participants can gain international exposure, practical experience, and receive an internship certificate, even within a shorter duration."
     },
     {
         category: "Internships",
@@ -54,11 +49,13 @@ const faqsData = [
         question: "What are the different modes of internships offered through IAESTE?",
         answer: `IAESTE offers internships in three different modes, depending on the offer and the host organization’s requirements:
 
-1. On-site Internships: These internships require students to travel to the host country or organization and work directly from the company, university, or research institution. This mode provides hands-on experience, cultural exposure, and the opportunity to build an international professional network.
-2. Remote Internships: In this mode, students can complete their internship virtually from their home location. Work is carried out online through digital collaboration tools, making it a flexible option while still allowing students to gain valuable international work experience.
-3. Hybrid Internships: Hybrid internships offer flexibility, allowing students to choose either the on-site mode or the remote mode for the entire internship duration, depending on the host organization’s offer and the student’s preference. This combines convenience with valuable professional exposure.
+            1. On-site Internships: These internships require students to travel to the host country or organization and work directly from the company, university, or research institution. This mode provides hands-on experience, cultural exposure, and the opportunity to build an international professional network.
 
-The mode of internship depends on the specific offer, giving students the opportunity to choose an internship format that best suits their preferences and circumstances.`
+            2. Remote Internships: In this mode, students can complete their internship virtually from their home location. Work is carried out online through digital collaboration tools, making it a flexible option while still allowing students to gain valuable international work experience.
+            
+            3. Hybrid Internships: Hybrid internships offer flexibility, allowing students to choose either the on-site mode or the remote mode for the entire internship duration, depending on the host organization’s offer and the student’s preference. This combines convenience with valuable professional exposure.
+
+            The mode of internship depends on the specific offer, giving students the opportunity to choose an internship format that best suits their preferences and circumstances.`
     },
     {
         category: "General",

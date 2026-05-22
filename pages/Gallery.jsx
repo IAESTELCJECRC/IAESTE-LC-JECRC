@@ -12,7 +12,7 @@ const imageModules = import.meta.glob("../src/assets/images/**/*.{jpg,jpeg,png,J
 
 // --- Mappings for better display names ---
 const NAME_MAP = {
-    'SRO Felicitation 2026': 'SRO Felicitation 2026',
+    'SRO Felicitation 2026': 'SRO and Faculty Felicitation Ceremony 2026',
     'Membership_Drive': 'Membership Drive 2025',
     'Rhythm 2026': 'JU Rhythm 2026',
     'Womens_Day': "Women's Day 2025",
@@ -23,7 +23,7 @@ const NAME_MAP = {
     'Induction': 'Induction Ceremony 2025-26',
     'Aarunya': 'Aarunya 2025',
     'Rhythm 2025': 'JU Rhythm 2025',
-    'Rakhi': 'Rakhi Celebration 2025',
+    'Rakhi': 'Raksha Bandhan 2025',
     'Orientation': 'Orientation 2025',
     'Admin Session': 'Admin Session',
     'Team': 'IAESTE Team'

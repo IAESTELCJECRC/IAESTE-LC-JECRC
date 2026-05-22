@@ -295,6 +295,7 @@ export default function Outgoing() {
       <section ref={chartRef} className="max-w-6xl mx-auto mt-12 p-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
           <h2 className="text-2xl font-bold text-[#003F68]">Outgoing Students Statistics</h2>
+          
           <div className="hidden md:flex gap-2 items-center">
             <button
               onClick={() => setChartType("line")}

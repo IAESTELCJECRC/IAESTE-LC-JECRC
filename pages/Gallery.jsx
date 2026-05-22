@@ -12,6 +12,7 @@ const imageModules = import.meta.glob("../src/assets/images/**/*.{jpg,jpeg,png,J
 
 // --- Mappings for better display names ---
 const NAME_MAP = {
+    'SRO Felicitation 2026': 'SRO Felicitation 2026',
     'Membership_Drive': 'Membership Drive 2025',
     'Rhythm 2026': 'JU Rhythm 2026',
     'Womens_Day': "Women's Day 2025",
@@ -49,6 +50,7 @@ const CategoryCard = ({ category, onSelect }) => {
         "Orientation",
         "Induction",
         "Admin Session",
+        "SRO Felicitation 2026",
     ];
 
     const isLongTitleCard = longTitleCards.includes(category.id);

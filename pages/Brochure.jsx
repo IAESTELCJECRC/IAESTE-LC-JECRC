@@ -36,7 +36,7 @@ export default function Brochure() {
         </svg>
       ),
       description: 'Corporate Relations & Alumni - Connecting students with worldwide opportunities.',
-      viewLink: '/brochures/CRA_Brochure.pdf',
+      viewLink: 'https://drive.google.com/file/d/1Uq-78Yt8LVNGXSZqY43LAMQWnH2JKuDW/view?usp=sharing',
       downloadLink: '/brochures/CRA_Brochure.pdf',
     },
   ];

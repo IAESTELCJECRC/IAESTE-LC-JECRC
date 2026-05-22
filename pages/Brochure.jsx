@@ -36,8 +36,8 @@ export default function Brochure() {
         </svg>
       ),
       description: 'Corporate Relations & Alumni - Connecting students with worldwide opportunities.',
-      viewLink: '#',
-      downloadLink: '#',
+      viewLink: '/brochures/CRA_Brochure.pdf',
+      downloadLink: '/brochures/CRA_Brochure.pdf',
     },
   ];
 
@@ -83,6 +83,7 @@ export default function Brochure() {
                   href={brochure.viewLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  download={`${brochure.title}.pdf`}
                   className="block w-full bg-[#003F68] text-white text-center py-2.5 rounded-lg font-semibold hover:bg-[#005a8f] transition-colors duration-200"
                 >
                   View Brochure
@@ -114,7 +115,7 @@ export default function Brochure() {
                 <a
                   key={brochure.id}
                   href={brochure.downloadLink}
-                  download
+                  download={`${brochure.title}.pdf`}
                   className="px-5 py-2 bg-[#003F68] text-white rounded-lg font-medium hover:bg-[#005a8f] transition-colors text-sm"
                 >
                   Download {brochure.title}

@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Carousel from '../components/Carousel';
-import Step from '../components/Step';
 import { Suspense, lazy } from 'react';
 
 // Lazy load heavy below-the-fold components
 const StatisticsCharts = lazy(() => import('../components/StatisticsCharts'));
-const Stepper = lazy(() => import('../components/Stepper'));
 
 // Optimized loading placeholder for lazy sections
 const SectionLoader = () => (
@@ -280,89 +278,6 @@ export default function Home() {
           
           <MembershipSection />
       
-
-      {/* How to Apply Section */}
-      
-      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-6 sm:py-8" aria-labelledby="apply-title">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-            className="text-center mb-3 sm:mb-4"
-          >
-            <h2 id="apply-title" className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-3 tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-              HOW TO APPLY FOR AN IAESTE INTERNSHIP
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 font-normal" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-              3 simple steps and you're good to go!
-            </p>
-          </motion.div>
-
-          {/* Stepper Component */}
-          <Suspense fallback={<SectionLoader />}>
-            <Stepper
-              initialStep={1}
-              backButtonText="Previous"
-              nextButtonText="Next"
-            >
-              <Step>
-                <div className="text-center py-1">
-                  <div className="flex justify-center mb-2">
-                    <div className="w-12 h-12 bg-[#003F68]/10 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[#003F68]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    Click on "Join Membership"
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-md mx-auto" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    You will get to see it in the starting of the website. Look for the "Join Membership" button in the navigation bar at the top of the page.
-                  </p>
-                </div>
-              </Step>
-              <Step>
-                <div className="text-center py-1">
-                  <div className="flex justify-center mb-2">
-                    <div className="w-12 h-12 bg-[#003F68]/10 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[#003F68]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    Pay the Membership Fee
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-md mx-auto" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    Submit the fee through our secure online payment portal. Choose between INSTATION or OUTSTATION membership based on your university.
-                  </p>
-                </div>
-              </Step>
-              <Step>
-                <div className="text-center py-1">
-                  <div className="flex justify-center mb-2">
-                    <div className="w-12 h-12 bg-[#003F68]/10 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-[#4c6b7f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-1" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    Get Full Access
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-md mx-auto" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                    Receive access to all the internship offers and application forms. Start exploring international opportunities and apply for internships that match your skills and interests.
-                  </p>
-                </div>
-              </Step>
-            </Stepper>
-          </Suspense>
-        </div>
-      </section>
 
       {/* Statistics Charts Section */}
       <Suspense fallback={<SectionLoader />}>

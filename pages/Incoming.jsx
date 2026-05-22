@@ -14,6 +14,18 @@ import {
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 
+
+const testimonialImageModules = {
+  ...import.meta.glob('../src/assets/Interns/*.{avif,jpg,jpeg,png}', {
+    eager: true,
+    import: 'default',
+  }),
+  ...import.meta.glob('../src/assets/images/Team/*.{avif,jpg,jpeg,png}', {
+    eager: true,
+    import: 'default',
+  }),
+};
+
 ChartJS.register(
   CategoryScale,
   LinearScale,

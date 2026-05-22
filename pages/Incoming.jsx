@@ -26,6 +26,14 @@ const testimonialImageModules = {
   }),
 };
 
+const getAssetKey = (filePath = '') => filePath.split('/').pop()?.toLowerCase() || '';
+
+const testimonialImageMap = Object.fromEntries(
+  Object.entries(testimonialImageModules).map(([filePath, assetUrl]) => [getAssetKey(filePath), assetUrl])
+);
+
+const resolveTestimonialImage = (imagePath) => testimonialImageMap[getAssetKey(imagePath)] || imagePath;
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -337,8 +345,13 @@ export default function Incoming() {
     }
   ];
 
-  const topStories = successStories.slice(0, 3);
-  const bottomStories = successStories.slice(3);
+  const resolvedSuccessStories = successStories.map((story) => ({
+    ...story,
+    image: resolveTestimonialImage(story.image),
+  }));
+
+  const topStories = resolvedSuccessStories.slice(0, 3);
+  const bottomStories = resolvedSuccessStories.slice(3);
   const totalTopCards = topStories.length;
   const totalBottomCards = bottomStories.length;
 

@@ -293,7 +293,7 @@ export default function Incoming() {
         "This internship originally started as a short project during my summer vacation from university. However, it turned out to be quite intensive and served as a great opportunity to consolidate my knowledge, including network protocols and inter-process communication. Although I was only able to implement the basic components due to time constraints, I was glad to have the chance to develop an application involving machine learning techniques for the first time.",
       linkedin: "#",
       email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/Tasuku.jpeg"
+      image: "../src/assets/Interns/tasuku.avif"
     },{
       id: 2,
       name: "Marcin Sochacki",
@@ -322,7 +322,7 @@ export default function Incoming() {
         "During my time at JECRC University, I was able to work on a project completely unrelated to the subject I study at my home university. This allowed me to develop my technical knowledge and gain new skills. I would like to thank the IAESTE crew for being so welcoming and making my stay unforgettable.",
       linkedin: "#",
       email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/mathew.jpeg"
+      image: "../src/assets/Interns/mathew.avif"
     },
     {
       id: 5,
@@ -332,7 +332,7 @@ export default function Incoming() {
         "My IAESTE journey at JECRC University, Jaipur, was transformative, blending vibrant culture with unparalleled technical learning. Guided by my supervisor, I gained hands-on experience shaping my career path. The friendships and connections made here feel like family. Forever grateful to IAESTE LC JECRC, this enriching experience has been pivotal, and I eagerly anticipate returning to my second home.",
       linkedin: "#",
       email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/emna.jpg"
+      image: "../src/assets/Interns/emna.avif"
     },
     {
       id: 6,
@@ -341,7 +341,7 @@ export default function Incoming() {
       testimonial:"My two-month IAESTE internship at JECRC University in civil engineering was transformative. I explored bamboo as a sustainable building material, gained cultural insights, and formed lasting bonds. The warmth and generosity of Indian people made India my second home. From academic growth to exploring iconic sites like the Taj Mahal, this enriching journey will remain unforgettable.",
       linkedin: "#",
       email: "#",
-      image: "https://www.iaestelcjecrc.com/assets/img/avatars/doaa.jpg"
+      image: "../src/assets/Interns/doaa.avif"
     }
   ];
 

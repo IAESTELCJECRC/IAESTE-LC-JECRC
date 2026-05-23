@@ -26,6 +26,7 @@ export default function Brochure() {
       description: 'Home Away from Home - Making international interns feel at home.',
       viewLink: '#',
       downloadLink: '#',
+      isAvailable: false,
     },
     {
       id: 'cra',
@@ -79,15 +80,25 @@ export default function Brochure() {
                 <p className="text-gray-600 text-sm">{brochure.description}</p>
               </div>
               <div className="p-6">
-                <a
-                  href={brochure.viewLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download={`${brochure.title}.pdf`}
-                  className="block w-full bg-[#003F68] text-white text-center py-2.5 rounded-lg font-semibold hover:bg-[#005a8f] transition-colors duration-200"
-                >
-                  View Brochure
-                </a>
+                {brochure.isAvailable === false ? (
+                  <button
+                    type="button"
+                    disabled
+                    className="block w-full cursor-not-allowed bg-gray-300 text-gray-600 text-center py-2.5 rounded-lg font-semibold"
+                    aria-disabled="true"
+                  >
+                    View Brochure
+                  </button>
+                ) : (
+                  <a
+                    href={brochure.viewLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-[#003F68] text-white text-center py-2.5 rounded-lg font-semibold hover:bg-[#005a8f] transition-colors duration-200"
+                  >
+                    View Brochure
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
@@ -112,14 +123,26 @@ export default function Brochure() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {brochureTypes.map((brochure) => (
-                <a
-                  key={brochure.id}
-                  href={brochure.downloadLink}
-                  download={`${brochure.title}.pdf`}
-                  className="px-5 py-2 bg-[#003F68] text-white rounded-lg font-medium hover:bg-[#005a8f] transition-colors text-sm"
-                >
-                  Download {brochure.title}
-                </a>
+                brochure.isAvailable === false ? (
+                  <button
+                    key={brochure.id}
+                    type="button"
+                    disabled
+                    className="px-5 py-2 cursor-not-allowed bg-gray-300 text-gray-600 rounded-lg font-medium text-sm"
+                    aria-disabled="true"
+                  >
+                    Download {brochure.title}
+                  </button>
+                ) : (
+                  <a
+                    key={brochure.id}
+                    href={brochure.downloadLink}
+                    download={`${brochure.title}.pdf`}
+                    className="px-5 py-2 bg-[#003F68] text-white rounded-lg font-medium hover:bg-[#005a8f] transition-colors text-sm"
+                  >
+                    Download {brochure.title}
+                  </a>
+                )
               ))}
             </div>
           </div>

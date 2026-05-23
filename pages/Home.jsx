@@ -23,6 +23,19 @@ import homeImage6 from '../src/assets/images/home6.avif';
 import WhoWeAreIMG from '../src/assets/images/whoWeAreCoverImage.avif';
 import MembershipSection from '../components/MembershipSection';
 
+const testimonialImageModules = import.meta.glob('../src/assets/Interns/*.{avif,jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+});
+
+const getAssetKey = (filePath = '') => filePath.split('/').pop()?.toLowerCase() || '';
+
+const testimonialImageMap = Object.fromEntries(
+  Object.entries(testimonialImageModules).map(([filePath, assetUrl]) => [getAssetKey(filePath), assetUrl])
+);
+
+const resolveTestimonialImage = (imagePath) => testimonialImageMap[getAssetKey(imagePath)] || imagePath;
+
 export default function Home() {
   // Carousel slides data with home image repeated
   const slides = [
@@ -310,7 +323,7 @@ export default function Home() {
                 name: "Tasuku Nagata",
                 location: "Japan",
                 testimonial: "This internship started as a short summer project but turned into a great opportunity to consolidate my knowledge and work with machine learning techniques for the first time.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Tasuku.jpeg",
+                image: "../src/assets/Interns/tasuku.avif",
                 type: "Incoming"
                 
               },
@@ -319,7 +332,7 @@ export default function Home() {
                 name: "Emna",
                 location: "Tunisia",
                 testimonial: "My IAESTE journey at JECRC University, Jaipur, was transformative, blending vibrant culture with unparalleled technical learning. The friendships and connections made here feel like family.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/emna.jpg",
+                image: "../src/assets/Interns/emna.avif",
                 type: "Incoming"
               },
               {
@@ -327,7 +340,7 @@ export default function Home() {
                 name: "Vikram Singh",
                 location: "Jaipur, India",
                 testimonial: "I completed a remote IAESTE internship with IAESTE Burundi, focusing on Full Stack Web Development. This experience was truly enriching and one of the most rewarding chapters of my journey.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Vikram.jpeg",
+                image: "../src/assets/Interns/Vikram.avif",
                 type: "Outgoing"
               },
               {
@@ -335,7 +348,7 @@ export default function Home() {
                 name: "Homa Ramezani",
                 location: "Iran",
                 testimonial: "I spent about 6 weeks at JECRC University in Jaipur. Besides working on projects, I had the chance to travel to different cities in India and enjoy the beauty of this AMAZING country.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Homa.jpeg",
+                image: "../src/assets/Interns/Homa.avif",
                 type: "Incoming"
               },
               {
@@ -343,7 +356,7 @@ export default function Home() {
                 name: "Aaditya Mittal",
                 location: "Jaipur, India",
                 testimonial: "My internship at the Iran Institute of Science & Technology was an enriching experience that strengthened my academic and personal growth. I gained real research exposure and technical skills.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Aaditya.jpeg",
+                image: "../src/assets/Interns/Aaditya.avif",
                 type: "Outgoing"
               },
               {
@@ -351,10 +364,13 @@ export default function Home() {
                 name: "Adnan Ayman Adnan Abutahnat",
                 location: "Palestine",
                 testimonial: "India was not just a training destination for me, but a journey that changed my life. Living far from home taught me independence, patience, and the ability to face challenges with confidence.",
-                image: "https://www.iaestelcjecrc.com/assets/img/avatars/Adnan1.jpeg",
+                image: "../src/assets/Interns/Adnan.avif",
                 type: "Incoming"
               }
-            ].map((testimonial, index) => (
+            ].map((testimonial) => ({
+              ...testimonial,
+              image: resolveTestimonialImage(testimonial.image),
+            })).map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -408,4 +424,3 @@ export default function Home() {
     </div>
   );
 }
-

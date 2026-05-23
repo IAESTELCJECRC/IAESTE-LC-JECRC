@@ -15,6 +15,19 @@ import {
 import { Line, Bar } from "react-chartjs-2";
 // import { log } from "console";
 
+const testimonialImageModules = import.meta.glob('../src/assets/Interns/*.{avif,jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+});
+
+const getAssetKey = (filePath = '') => filePath.split('/').pop()?.toLowerCase() || '';
+
+const testimonialImageMap = Object.fromEntries(
+  Object.entries(testimonialImageModules).map(([filePath, assetUrl]) => [getAssetKey(filePath), assetUrl])
+);
+
+const resolveTestimonialImage = (imagePath) => testimonialImageMap[getAssetKey(imagePath)] || imagePath;
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -73,7 +86,7 @@ export default function Outgoing() {
 "I completed a remote IAESTE internship with IAESTE Burundi, focusing on Full Stack Web Development. During this period, I developed a website using React, Tailwind CSS, and Node.js, which enhanced my technical expertise, collaboration skills, and understanding of global work culture. This experience was truly enriching and one of the most rewarding chapters of my journey.",
       linkedin: "https://www.linkedin.com/in/vikram-saini-0b35ab207?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       image:
-        "https://www.iaestelcjecrc.com/assets/img/avatars/Vikram.jpeg"
+        "../src/assets/Interns/Vikram.avif"
     },
     {
       id: 2,
@@ -82,7 +95,7 @@ export default function Outgoing() {
       testimonial:"My internship at the Iran Institute of Science & Technology was an enriching experience that strengthened my academic and personal growth. Under the guidance of Ms. Marzieh Davoodabadi, I worked on Twitter Bot detection, evaluating datasets using existing models and analyzing their performance. I gained real research exposure, technical skills, and cultural understanding. I am grateful to IAESTE LC JECRC and JECRC University for this global opportunity and seamless support. This internship remains a valuable milestone in my learning journey.",
         linkedin: "https://www.linkedin.com/in/aadityamittal01?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       image:
-        "https://www.iaestelcjecrc.com/assets/img/avatars/Aaditya.jpeg"
+        "../src/assets/Interns/Aaditya.avif"
     },
     {
       id: 3,
@@ -92,7 +105,7 @@ export default function Outgoing() {
         "My internship at IAESTE Tanzania (NECTA) was one of the most enriching experiences of my journey so far. I had the opportunity to work on the Billing System of NECTA, where I was involved in improving and developing features using C# and the .NET Framework.",
       linkedin: "https://www.linkedin.com/in/palak-kumari-b855a521b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       image:
-        "https://www.iaestelcjecrc.com/assets/img/avatars/Palak.jpeg"
+        "../src/assets/Interns/Palak.avif"
     },
     {
       id: 4,
@@ -102,7 +115,7 @@ export default function Outgoing() {
         "During my internship, I worked on an Artificial Intelligence and Machine Learning project focused on drug discovery, which allowed me to enhance my technical knowledge and research skills. Along with professional learning, I had the opportunity to explore beautiful places like Rio de Janeiro, experiencing the warmth and vibrant culture of Brazil.",
       linkedin: "https://www.linkedin.com/in/nakul-kandira-914568286?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       image:
-        "https://www.iaestelcjecrc.com/assets/img/avatars/Nakul.jpeg"
+        "../src/assets/Interns/Nakul.avif"
     },
     {
       id: 5,
@@ -112,9 +125,14 @@ export default function Outgoing() {
         "My internship with Universidad Santo Tomás, Tunja (Colombia) was a highly enriching experience. I worked on the DTI – Tunja smart-tourism project, creating 3D character models and WebAR prototypes using Blender and 8th Wall. I gained practical skills in immersive media and cultural storytelling. I am grateful to Prof. William Álvarez and IAESTE India LC JECRC for their support, which inspires my future work in XR and digital heritage.",
       linkedin: "https://www.linkedin.com/in/priyanshsingh211?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       image:
-        "https://www.iaestelcjecrc.com/assets/img/avatars/Priyansh.jpeg"
+        "../src/assets/Interns/Priyansh.avif"
     }
   ];
+
+  const resolvedSuccessStories = successStories.map((story) => ({
+    ...story,
+    image: resolveTestimonialImage(story.image),
+  }));
 
   const data = [
     { year: "2013-14", countries: ["Czech Republic","Bosnia"], students: 2 },
@@ -195,8 +213,8 @@ export default function Outgoing() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const topStories = successStories.slice(0, 3);
-  const bottomStories = successStories.slice(3);
+  const topStories = resolvedSuccessStories.slice(0, 3);
+  const bottomStories = resolvedSuccessStories.slice(3);
 
   const totalCards = topStories.length;
   const totalBottomCards = bottomStories.length;

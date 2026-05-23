@@ -107,6 +107,8 @@ const CategoryCard = ({ category, onSelect }) => {
 const MasonryGrid = ({ items }) => {
     const [displayLimit, setDisplayLimit] = useState(12);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const [activeImageIndex, setActiveImageIndex] = useState(null);
+    const activeImage = activeImageIndex === null ? null : items[activeImageIndex];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -121,18 +123,57 @@ const MasonryGrid = ({ items }) => {
         };
     }, []);
 
+    useEffect(() => {
+        if (activeImageIndex === null) return undefined;
+
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setActiveImageIndex(null);
+            }
+            if (event.key === "ArrowRight") {
+                setActiveImageIndex(prev => (prev + 1) % items.length);
+            }
+            if (event.key === "ArrowLeft") {
+                setActiveImageIndex(prev => (prev - 1 + items.length) % items.length);
+            }
+        };
+
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = "";
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [activeImageIndex, items.length]);
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const openImage = (index) => {
+        setActiveImageIndex(index);
+    };
+
+    const showPreviousImage = () => {
+        setActiveImageIndex(prev => (prev - 1 + items.length) % items.length);
+    };
+
+    const showNextImage = () => {
+        setActiveImageIndex(prev => (prev + 1) % items.length);
     };
 
     return (
         <div className="pb-32">
             <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4 space-y-4 p-4">
                 {items.slice(0, displayLimit).map((item, index) => (
-                    <div
+                    <button
+                        type="button"
                         key={index}
-                        className="break-inside-avoid rounded-2xl overflow-hidden shadow-lg group relative bg-gray-100"
+                        onClick={() => openImage(index)}
+                        className="block w-full text-left break-inside-avoid rounded-2xl overflow-hidden shadow-lg group relative bg-gray-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0B3D59]/30"
                         style={{ contentVisibility: 'auto' }}
+                        aria-label={`View ${item.title}`}
                     >
                         <div className="relative overflow-hidden">
                             <img
@@ -145,7 +186,7 @@ const MasonryGrid = ({ items }) => {
                                 <p className="text-white font-bold text-xs md:text-sm leading-tight">{item.title}</p>
                             </div>
                         </div>
-                    </div>
+                    </button>
                 ))}
             </div>
 
@@ -175,6 +216,81 @@ const MasonryGrid = ({ items }) => {
                         <KeyboardArrowUpIcon fontSize="small" />
                         <span className="hidden sm:inline">TOP</span>
                     </motion.button>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {activeImage && (
+                    <motion.div
+                        className="fixed inset-0 z-[80] bg-black/90 px-4 py-6 md:px-8 md:py-10 flex items-center justify-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={activeImage.title}
+                        onClick={() => setActiveImageIndex(null)}
+                    >
+                        <button
+                            type="button"
+                            aria-label="Close image"
+                            onClick={() => setActiveImageIndex(null)}
+                            className="absolute right-4 top-4 md:right-8 md:top-8 z-[90] h-11 w-11 rounded-full bg-white/15 text-white text-2xl leading-none hover:bg-white/25 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
+                        >
+                            ×
+                        </button>
+
+                        <button
+                            type="button"
+                            aria-label="Previous image"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                showPreviousImage();
+                            }}
+                            className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-[90] h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/15 text-white hover:bg-white/25 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40 flex items-center justify-center"
+                        >
+                            <span className="text-3xl md:text-4xl leading-none" aria-hidden="true">‹</span>
+                        </button>
+
+                        <motion.div
+                            key={activeImage.image}
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                            className="w-full max-w-6xl"
+                            onClick={(event) => event.stopPropagation()}
+                        >
+                            <div className="relative mx-auto flex max-h-[78vh] items-center justify-center">
+                                <img
+                                    src={activeImage.image}
+                                    alt={activeImage.title}
+                                    className="max-h-[78vh] w-auto max-w-full rounded-xl object-contain shadow-2xl"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                            </div>
+                            <div className="mt-4 flex flex-col items-center justify-center gap-1 text-center text-white">
+                                <p className="text-base md:text-lg font-black">{activeImage.title}</p>
+                                <p className="text-xs md:text-sm font-bold text-white/65">
+                                    {activeImageIndex + 1} / {items.length}
+                                </p>
+                            </div>
+                        </motion.div>
+
+                        <button
+                            type="button"
+                            aria-label="Next image"
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                showNextImage();
+                            }}
+                            className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-[90] h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/15 text-white hover:bg-white/25 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40 flex items-center justify-center"
+                        >
+                            <span className="text-3xl md:text-4xl leading-none" aria-hidden="true">›</span>
+                        </button>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>
